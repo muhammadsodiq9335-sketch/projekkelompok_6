@@ -164,7 +164,7 @@
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <i class="fas fa-hospital-alt"></i>
-            <span>RME ADMIN</span>
+            <span>RS PROJEK WEB 6</span>
         </div>
         
         <ul class="sidebar-menu">
