@@ -30,6 +30,7 @@ class AuthController extends Controller
                 'petugas' => redirect()->route('petugas.dashboard'),
                 'perawat' => redirect()->route('perawat.dashboard'),
                 'dokter' => redirect()->route('dokter.dashboard'),
+                'super_admin' => redirect()->route('super_admin.dashboard'),
                 default => $this->handleInvalidRole(),
             };
         }

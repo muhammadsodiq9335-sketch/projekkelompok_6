@@ -17,10 +17,16 @@ use App\Http\Middleware\PetugasMiddleware;
 use App\Http\Middleware\PerawatMiddleware;
 use App\Http\Middleware\DokterMiddleware;
 use App\Http\Middleware\ApotekerMiddleware;
+use App\Http\Middleware\SuperAdminMiddleware;
+use App\Http\Controllers\SuperAdmin\DashboardController as SuperAdminDashboard;
+use App\Http\Controllers\SuperAdmin\DokterController as SuperAdminDokter;
+use App\Http\Controllers\SuperAdmin\PetugasController as SuperAdminPetugas;
+use App\Http\Controllers\SuperAdmin\PerawatController as SuperAdminPerawat;
 
 // Landing page
+// Landing page
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 // Auth Routes
@@ -83,4 +89,14 @@ Route::middleware(['auth', ApotekerMiddleware::class])->prefix('apotek')->name('
     Route::get('/resep/riwayat', [ApotekResep::class, 'riwayat'])->name('resep.riwayat');
     Route::get('/resep/{resep}', [ApotekResep::class, 'show'])->name('resep.show');
     Route::post('/resep/{resep}/process', [ApotekResep::class, 'process'])->name('resep.process');
+});
+
+// Super Admin Routes
+Route::middleware(['auth', SuperAdminMiddleware::class])->prefix('super-admin')->name('super_admin.')->group(function () {
+    Route::get('/dashboard', [SuperAdminDashboard::class, 'index'])->name('dashboard');
+    
+    // Master Data
+    Route::resource('dokter', SuperAdminDokter::class)->except(['show']);
+    Route::resource('petugas', SuperAdminPetugas::class)->except(['show']);
+    Route::resource('perawat', SuperAdminPerawat::class)->except(['show']);
 });
