@@ -31,6 +31,7 @@ class AuthController extends Controller
                 'perawat' => redirect()->route('perawat.dashboard'),
                 'dokter' => redirect()->route('dokter.dashboard'),
                 'super_admin' => redirect()->route('super_admin.dashboard'),
+                'apoteker' => redirect()->route('apotek.resep.index'),
                 default => $this->handleInvalidRole(),
             };
         }

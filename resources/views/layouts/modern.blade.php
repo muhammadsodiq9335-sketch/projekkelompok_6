@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     
     <style>
         body {
@@ -296,6 +299,19 @@
                         <span>Pemeriksaan</span>
                     </a>
                 </li>
+            @elseif(Auth::user()->role == 'apoteker')
+                <li class="menu-item">
+                    <a href="{{ route('apotek.resep.index') }}" class="menu-link {{ request()->routeIs('apotek.resep.*') ? 'active' : '' }}">
+                        <i class="fas fa-prescription-bottle-alt menu-icon"></i>
+                        <span>Antrian Resep</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('apotek.obat.index') }}" class="menu-link {{ request()->routeIs('apotek.obat.*') ? 'active' : '' }}">
+                        <i class="fas fa-pills menu-icon"></i>
+                        <span>Data Obat</span>
+                    </a>
+                </li>
             @endif
 
             <li class="menu-header">LAINNYA</li>
@@ -321,7 +337,9 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         document.getElementById('sidebarToggle').addEventListener('click', function() {
             document.getElementById('mainSidebar').classList.toggle('show');
