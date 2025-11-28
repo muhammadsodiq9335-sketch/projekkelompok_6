@@ -65,14 +65,35 @@ class Pendaftaran extends Model
 
         static::creating(function ($pendaftaran) {
             if (empty($pendaftaran->no_antrian)) {
-                $lastAntrian = static::whereDate('tanggal_kunjungan', $pendaftaran->tanggal_kunjungan)
-                    ->where('poliklinik', $pendaftaran->poliklinik)
-                    ->latest('id')
-                    ->first();
-                
-                $nextNumber = $lastAntrian ? ((int)substr($lastAntrian->no_antrian, -3)) + 1 : 1;
                 $poliCode = strtoupper(substr($pendaftaran->poliklinik, 0, 3));
-                $pendaftaran->no_antrian = $poliCode . date('dmy') . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
+                // Ensure we use the date from the input, not just today's date
+                $dateCode = date('dmy', strtotime($pendaftaran->tanggal_kunjungan));
+                $prefix = $poliCode . $dateCode;
+
+                // Find the last number used for this specific prefix
+                // We use a raw query for length to ensure we sort correctly (e.g. 10 > 2)
+                $lastRecord = static::where('no_antrian', 'like', $prefix . '%')
+                    ->orderByRaw('LENGTH(no_antrian) DESC')
+                    ->orderBy('no_antrian', 'desc')
+                    ->first();
+
+                $nextNumber = 1;
+                if ($lastRecord) {
+                    // Extract the numeric part after the prefix
+                    // e.g. POL281125001 -> 001
+                    $lastNumber = (int)substr($lastRecord->no_antrian, strlen($prefix));
+                    $nextNumber = $lastNumber + 1;
+                }
+
+                $candidate = $prefix . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
+
+                // Final safety check to ensure uniqueness (in case of race conditions or manual inserts)
+                while (static::where('no_antrian', $candidate)->exists()) {
+                    $nextNumber++;
+                    $candidate = $prefix . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
+                }
+
+                $pendaftaran->no_antrian = $candidate;
             }
         });
     }
