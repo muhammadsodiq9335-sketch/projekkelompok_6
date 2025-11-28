@@ -18,6 +18,7 @@ class Pendaftaran extends Model
         'jam_kunjungan',
         'poliklinik',
         'dokter_id',
+        'perawat_id',
         'keluhan',
         'jenis_kunjungan',
         'status',
@@ -36,6 +37,11 @@ class Pendaftaran extends Model
     public function dokter()
     {
         return $this->belongsTo(User::class, 'dokter_id');
+    }
+
+    public function perawat()
+    {
+        return $this->belongsTo(User::class, 'perawat_id');
     }
 
     public function petugas()

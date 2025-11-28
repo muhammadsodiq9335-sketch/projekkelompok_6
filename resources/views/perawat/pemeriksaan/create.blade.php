@@ -75,7 +75,7 @@
                             </div>
 
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-info text-white btn-lg">Simpan & Lanjut ke Dokter</button>
+                                <button type="submit" class="btn btn-info text-white btn-lg">Simpan & Kirim ke Dokter</button>
                             </div>
                         </form>
                     </div>
