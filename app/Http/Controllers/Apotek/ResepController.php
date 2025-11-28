@@ -45,9 +45,12 @@ class ResepController extends Controller
             }
 
             $resep->update(['status' => 'selesai']);
+            
+            // Update Pendaftaran status to Menunggu Pembayaran
+            $resep->pendaftaran->update(['status' => 'Menunggu Pembayaran']);
 
             DB::commit();
-            return redirect()->route('apotek.resep.index')->with('success', 'Resep berhasil diproses dan stok obat telah dikurangi.');
+            return redirect()->route('apotek.resep.index')->with('success', 'Resep berhasil diproses. Pasien diarahkan ke kasir.');
 
         } catch (\Exception $e) {
             DB::rollback();

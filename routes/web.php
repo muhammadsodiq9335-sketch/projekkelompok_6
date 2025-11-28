@@ -22,6 +22,7 @@ use App\Http\Controllers\SuperAdmin\DashboardController as SuperAdminDashboard;
 use App\Http\Controllers\SuperAdmin\DokterController as SuperAdminDokter;
 use App\Http\Controllers\SuperAdmin\PetugasController as SuperAdminPetugas;
 use App\Http\Controllers\SuperAdmin\PerawatController as SuperAdminPerawat;
+use App\Http\Controllers\Petugas\PembayaranController;
 
 // Landing page
 // Landing page
@@ -43,8 +44,16 @@ Route::middleware(['auth', PetugasMiddleware::class])->prefix('petugas')->name('
     Route::get('pasien/{pasien}/print-card', [PetugasPasien::class, 'printCard'])->name('pasien.print-card');
     
     // Pendaftaran
+    // Pendaftaran
     Route::resource('pendaftaran', PetugasPendaftaran::class);
     Route::get('pendaftaran/{pendaftaran}/print', [PetugasPendaftaran::class, 'print'])->name('pendaftaran.print');
+    
+    // Pembayaran / Kasir
+    Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
+    Route::get('/pembayaran/create/{pendaftaran}', [PembayaranController::class, 'create'])->name('pembayaran.create');
+    Route::post('/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
+    Route::get('/pembayaran/{pembayaran}', [PembayaranController::class, 'show'])->name('pembayaran.show');
+    Route::get('/pembayaran/{pembayaran}/print', [PembayaranController::class, 'print'])->name('pembayaran.print');
 });
 
 // Perawat Routes
