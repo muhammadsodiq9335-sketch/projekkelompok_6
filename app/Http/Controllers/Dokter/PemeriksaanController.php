@@ -141,12 +141,99 @@ class PemeriksaanController extends Controller
 
     public function edit(Pemeriksaan $pemeriksaan)
     {
-        return view('dokter.pemeriksaan.edit', compact('pemeriksaan'));
+        $obatList = Obat::where('stok', '>', 0)->orderBy('nama_obat')->get();
+        $pemeriksaan->load(['pendaftaran.pasien', 'pendaftaran.vitalSign']);
+        
+        // Load existing resep if any
+        $resep = Resep::with('details')->where('pendaftaran_id', $pemeriksaan->pendaftaran_id)->first();
+
+        return view('dokter.pemeriksaan.edit', compact('pemeriksaan', 'obatList', 'resep'));
     }
 
     public function update(Request $request, Pemeriksaan $pemeriksaan)
     {
-        // Implement update logic if needed
+        $request->validate([
+            'anamnesa' => 'required|string',
+            'pemeriksaan_fisik' => 'required|string',
+            'diagnosis_utama' => 'required|string',
+            'diagnosis_sekunder' => 'nullable|string',
+            'tindakan' => 'required|string',
+            'rencana_tindak_lanjut' => 'nullable|in:Kontrol,Rujuk,Pulang,Rawat Inap',
+            'tanggal_kontrol' => 'nullable|date',
+            'obat_id' => 'nullable|array',
+            'obat_id.*' => 'exists:obat,id',
+            'jumlah' => 'nullable|array',
+            'jumlah.*' => 'numeric|min:1',
+            'aturan_pakai' => 'nullable|array',
+            'aturan_pakai.*' => 'string',
+        ]);
+
+        try {
+            // 1. Update Pemeriksaan
+            $pemeriksaan->update([
+                'anamnesis' => $request->anamnesa,
+                'pemeriksaan_fisik' => $request->pemeriksaan_fisik,
+                'diagnosis_utama' => $request->diagnosis_utama,
+                'diagnosis_tambahan' => $request->diagnosis_sekunder,
+                'tindakan' => $request->tindakan,
+                'rencana_tindak_lanjut' => $request->rencana_tindak_lanjut,
+                'tanggal_kontrol' => $request->tanggal_kontrol,
+            ]);
+
+            // 2. Handle Resep
+            $hasObat = false;
+            if ($request->has('obat_id') && count($request->obat_id) > 0) {
+                foreach ($request->obat_id as $oid) {
+                    if ($oid) $hasObat = true;
+                }
+            }
+
+            $resep = Resep::where('pendaftaran_id', $pemeriksaan->pendaftaran_id)->first();
+
+            if ($hasObat) {
+                if (!$resep) {
+                    $resep = Resep::create([
+                        'pendaftaran_id' => $pemeriksaan->pendaftaran_id,
+                        'dokter_id' => Auth::id(),
+                        'status' => 'menunggu',
+                    ]);
+                } else {
+                    // Reset details
+                    DetailResep::where('resep_id', $resep->id)->delete();
+                }
+
+                foreach ($request->obat_id as $key => $obatId) {
+                    if ($obatId && isset($request->jumlah[$key])) {
+                        $obat = Obat::find($obatId);
+                        DetailResep::create([
+                            'resep_id' => $resep->id,
+                            'obat_id' => $obatId,
+                            'jumlah' => $request->jumlah[$key],
+                            'aturan_pakai' => $request->aturan_pakai[$key] ?? '-',
+                            'harga_satuan' => $obat->harga,
+                        ]);
+                    }
+                }
+            } else {
+                if ($resep) {
+                    DetailResep::where('resep_id', $resep->id)->delete();
+                    $resep->delete();
+                }
+            }
+
+            // 3. Update Status Pendaftaran
+            if ($hasObat) {
+                Pendaftaran::where('id', $pemeriksaan->pendaftaran_id)->update(['status' => 'Menunggu Obat']);
+            } else {
+                Pendaftaran::where('id', $pemeriksaan->pendaftaran_id)->update(['status' => 'Menunggu Pembayaran']);
+            }
+
+            return redirect()->route('dokter.pemeriksaan.index')
+                ->with('success', 'Pemeriksaan berhasil diperbarui!');
+
+        } catch (\Exception $e) {
+            return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
+        }
     }
 
     public function destroy(Pemeriksaan $pemeriksaan)

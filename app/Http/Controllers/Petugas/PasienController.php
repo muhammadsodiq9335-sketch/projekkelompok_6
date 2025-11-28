@@ -29,6 +29,8 @@ class PasienController extends Controller
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'alamat' => 'required|string',
             'no_telepon' => 'required|string|max:15',
+            'jenis_pasien' => 'required|in:Umum,BPJS',
+            'no_bpjs' => 'nullable|string',
         ]);
 
         // Assign the currently authenticated user as the creator
@@ -59,6 +61,8 @@ class PasienController extends Controller
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'alamat' => 'required|string',
             'no_telepon' => 'required|string|max:15',
+            'jenis_pasien' => 'required|in:Umum,BPJS',
+            'no_bpjs' => 'nullable|string',
         ]);
 
         $pasien->update($validated);
