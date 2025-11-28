@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Dokter;
 use App\Http\Controllers\Controller;
 use App\Models\Pendaftaran;
 use App\Models\Pemeriksaan;
+use App\Models\Obat;
+use App\Models\Resep;
+use App\Models\DetailResep;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PemeriksaanController extends Controller
 {
@@ -37,38 +41,98 @@ class PemeriksaanController extends Controller
                 ->with('error', 'Pasien belum dilakukan pengukuran vital sign!');
         }
 
-        return view('dokter.pemeriksaan.create', compact('pendaftaran'));
+        $obatList = Obat::where('stok', '>', 0)->orderBy('nama_obat')->get();
+
+        return view('dokter.pemeriksaan.create', compact('pendaftaran', 'obatList'));
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'pendaftaran_id' => 'required|exists:pendaftaran,id',
-            'anamnesis' => 'required|string',
+            'anamnesa' => 'required|string',
             'pemeriksaan_fisik' => 'required|string',
             'diagnosis_utama' => 'required|string',
-            'diagnosis_tambahan' => 'nullable|string',
-            'tindakan' => 'nullable|string',
-            'resep_obat' => 'nullable|string',
-            'catatan_dokter' => 'nullable|string',
+            'diagnosis_sekunder' => 'nullable|string',
+            'tindakan' => 'required|string',
             'rencana_tindak_lanjut' => 'nullable|in:Kontrol,Rujuk,Pulang,Rawat Inap',
-            'tanggal_kontrol' => 'nullable|required_if:rencana_tindak_lanjut,Kontrol|date',
+            'tanggal_kontrol' => 'nullable|date',
+            // Validasi Resep
+            'obat_id' => 'nullable|array',
+            'obat_id.*' => 'exists:obat,id',
+            'jumlah' => 'nullable|array',
+            'jumlah.*' => 'numeric|min:1',
+            'aturan_pakai' => 'nullable|array',
+            'aturan_pakai.*' => 'string',
         ]);
 
-        $validated['dokter_id'] = Auth::id();
+        DB::beginTransaction();
 
-        $pemeriksaan = Pemeriksaan::create($validated);
+        try {
+            // 1. Simpan Pemeriksaan
+            $pemeriksaan = Pemeriksaan::create([
+                'pendaftaran_id' => $request->pendaftaran_id,
+                'dokter_id' => Auth::id(),
+                'anamnesis' => $request->anamnesa,
+                'pemeriksaan_fisik' => $request->pemeriksaan_fisik,
+                'diagnosis_utama' => $request->diagnosis_utama,
+                'diagnosis_tambahan' => $request->diagnosis_sekunder,
+                'tindakan' => $request->tindakan,
+                'catatan_dokter' => $request->catatan_dokter ?? null,
+                'rencana_tindak_lanjut' => $request->rencana_tindak_lanjut,
+                'tanggal_kontrol' => $request->tanggal_kontrol,
+            ]);
 
-        Pendaftaran::where('id', $request->pendaftaran_id)->update(['status' => 'Selesai']);
+            // 2. Simpan Resep jika ada obat yang dipilih
+            if ($request->has('obat_id') && count($request->obat_id) > 0) {
+                // Cek apakah ada obat yang dipilih (bukan null/kosong)
+                $hasObat = false;
+                foreach ($request->obat_id as $oid) {
+                    if ($oid) $hasObat = true;
+                }
 
-        return redirect()->route('dokter.pemeriksaan.show', $pemeriksaan)
-            ->with('success', 'Pemeriksaan berhasil dicatat!');
+                if ($hasObat) {
+                    $resep = Resep::create([
+                        'pendaftaran_id' => $request->pendaftaran_id,
+                        'dokter_id' => Auth::id(),
+                        'status' => 'menunggu',
+                    ]);
+
+                    foreach ($request->obat_id as $key => $obatId) {
+                        if ($obatId && isset($request->jumlah[$key])) {
+                            $obat = Obat::find($obatId);
+                            DetailResep::create([
+                                'resep_id' => $resep->id,
+                                'obat_id' => $obatId,
+                                'jumlah' => $request->jumlah[$key],
+                                'aturan_pakai' => $request->aturan_pakai[$key] ?? '-',
+                                'harga_satuan' => $obat->harga,
+                            ]);
+                        }
+                    }
+                }
+            }
+
+            // 3. Update Status Pendaftaran
+            Pendaftaran::where('id', $request->pendaftaran_id)->update(['status' => 'Selesai']);
+
+            DB::commit();
+
+            return redirect()->route('dokter.pemeriksaan.index')
+                ->with('success', 'Pemeriksaan dan Resep berhasil disimpan!');
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
+        }
     }
 
     public function show(Pemeriksaan $pemeriksaan)
     {
         $pemeriksaan->load(['pendaftaran.pasien', 'pendaftaran.vitalSign', 'dokter']);
-        return view('dokter.pemeriksaan.show', compact('pemeriksaan'));
+        $resep = Resep::with('details.obat')->where('pendaftaran_id', $pemeriksaan->pendaftaran_id)->first();
+        
+        return view('dokter.pemeriksaan.show', compact('pemeriksaan', 'resep'));
     }
 
     public function edit(Pemeriksaan $pemeriksaan)
@@ -78,36 +142,18 @@ class PemeriksaanController extends Controller
 
     public function update(Request $request, Pemeriksaan $pemeriksaan)
     {
-        $validated = $request->validate([
-            'anamnesis' => 'required|string',
-            'pemeriksaan_fisik' => 'required|string',
-            'diagnosis_utama' => 'required|string',
-            'diagnosis_tambahan' => 'nullable|string',
-            'tindakan' => 'nullable|string',
-            'resep_obat' => 'nullable|string',
-            'catatan_dokter' => 'nullable|string',
-            'rencana_tindak_lanjut' => 'nullable|in:Kontrol,Rujuk,Pulang,Rawat Inap',
-            'tanggal_kontrol' => 'nullable|required_if:rencana_tindak_lanjut,Kontrol|date',
-        ]);
-
-        $pemeriksaan->update($validated);
-
-        return redirect()->route('dokter.pemeriksaan.index')
-            ->with('success', 'Pemeriksaan berhasil diupdate!');
+        // Implement update logic if needed
     }
 
     public function destroy(Pemeriksaan $pemeriksaan)
     {
         $pemeriksaan->delete();
-        
-        return redirect()->route('dokter.pemeriksaan.index')
-            ->with('success', 'Pemeriksaan berhasil dihapus!');
+        return redirect()->route('dokter.pemeriksaan.index')->with('success', 'Pemeriksaan berhasil dihapus!');
     }
 
     public function riwayat()
     {
         $dokterId = Auth::id();
-
         $pemeriksaan = Pemeriksaan::with(['pendaftaran.pasien', 'dokter'])
             ->where('dokter_id', $dokterId)
             ->latest()

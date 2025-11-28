@@ -17,11 +17,12 @@ class DashboardController extends Controller
         $currentMonth = date('m');
         $currentYear = date('Y');
 
+        // CHANGED: get() instead of count() because view iterates over this
         $antrianMenunggu = Pendaftaran::where('dokter_id', $dokterId)
             ->whereDate('tanggal_kunjungan', $today)
             ->whereHas('vitalSign')
             ->whereDoesntHave('pemeriksaan')
-            ->count();
+            ->get();
 
         $pemeriksaanHariIni = Pemeriksaan::where('dokter_id', $dokterId)
             ->whereHas('pendaftaran', function($query) use ($today) {

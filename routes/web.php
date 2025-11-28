@@ -9,11 +9,14 @@ use App\Http\Controllers\Perawat\DashboardController as PerawatDashboard;
 use App\Http\Controllers\Perawat\PemeriksaanController as PerawatPemeriksaan;
 use App\Http\Controllers\Dokter\DashboardController as DokterDashboard;
 use App\Http\Controllers\Dokter\PemeriksaanController as DokterPemeriksaan;
+use App\Http\Controllers\Apotek\ObatController as ApotekObat;
+use App\Http\Controllers\Apotek\ResepController as ApotekResep;
 
 // Tambahkan namespace untuk Middleware
 use App\Http\Middleware\PetugasMiddleware;
 use App\Http\Middleware\PerawatMiddleware;
 use App\Http\Middleware\DokterMiddleware;
+use App\Http\Middleware\ApotekerMiddleware;
 
 // Landing page
 Route::get('/', function () {
@@ -26,8 +29,6 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Petugas Pendaftaran Routes
-// MELINDUNGI RUTE: Menambahkan middleware 'auth' dan 'petugas'
-// 'auth' memastikan pengguna login, 'petugas' memastikan perannya adalah petugas.
 Route::middleware(['auth', PetugasMiddleware::class])->prefix('petugas')->name('petugas.')->group(function () {
     Route::get('/dashboard', [PetugasDashboard::class, 'index'])->name('dashboard');
     
@@ -41,7 +42,6 @@ Route::middleware(['auth', PetugasMiddleware::class])->prefix('petugas')->name('
 });
 
 // Perawat Routes
-// MELINDUNGI RUTE: Menambahkan middleware 'auth' dan 'perawat'
 Route::middleware(['auth', PerawatMiddleware::class])->prefix('perawat')->name('perawat.')->group(function () {
     Route::get('/dashboard', [PerawatDashboard::class, 'index'])->name('dashboard');
     
@@ -56,7 +56,6 @@ Route::middleware(['auth', PerawatMiddleware::class])->prefix('perawat')->name('
 });
 
 // Dokter Routes
-// MELINDUNGI RUTE: Menambahkan middleware 'auth' dan 'dokter'
 Route::middleware(['auth', DokterMiddleware::class])->prefix('dokter')->name('dokter.')->group(function () {
     Route::get('/dashboard', [DokterDashboard::class, 'index'])->name('dashboard');
     
@@ -73,4 +72,15 @@ Route::middleware(['auth', DokterMiddleware::class])->prefix('dokter')->name('do
     // Pasien
     Route::get('/pasien', [DokterPemeriksaan::class, 'cariPasien'])->name('pasien.index');
     Route::get('/pasien/{pendaftaran}/riwayat', [DokterPemeriksaan::class, 'riwayatPasien'])->name('pasien.riwayat');
+});
+
+// Apotek Routes
+Route::middleware(['auth', ApotekerMiddleware::class])->prefix('apotek')->name('apotek.')->group(function () {
+    Route::resource('obat', ApotekObat::class);
+    
+    // Resep
+    Route::get('/resep', [ApotekResep::class, 'index'])->name('resep.index');
+    Route::get('/resep/riwayat', [ApotekResep::class, 'riwayat'])->name('resep.riwayat');
+    Route::get('/resep/{resep}', [ApotekResep::class, 'show'])->name('resep.show');
+    Route::post('/resep/{resep}/process', [ApotekResep::class, 'process'])->name('resep.process');
 });

@@ -12,48 +12,26 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // 1. Antrian Menunggu (Collection for Table & Count)
         $antrianMenunggu = Pendaftaran::where('status', 'Menunggu')
             ->whereDate('tanggal_kunjungan', today())
             ->whereDoesntHave('vitalSign')
-            ->count();
-
-        $vitalSignHariIni = VitalSign::whereHas('pendaftaran', function($query) {
-                $query->whereDate('tanggal_kunjungan', today());
-            })
-            ->count();
-
-        $vitalSignSaya = VitalSign::where('perawat_id', Auth::id())
-            ->whereHas('pendaftaran', function($query) {
-                $query->whereDate('tanggal_kunjungan', today());
-            })
-            ->count();
-
-        $pasienBelumVitalSign = Pendaftaran::whereDate('tanggal_kunjungan', today())
-            ->whereDoesntHave('vitalSign')
-            ->where('status', '!=', 'Batal')
-            ->count();
-
-        $statistikPerPoliklinik = Pendaftaran::select('poliklinik', DB::raw('count(*) as total'))
-            ->whereDate('tanggal_kunjungan', today())
-            ->whereHas('vitalSign')
-            ->groupBy('poliklinik')
             ->get();
 
-        $recentVitalSigns = VitalSign::with(['pendaftaran.pasien', 'perawat'])
-            ->whereHas('pendaftaran', function($query) {
+        // 2. Sudah Diperiksa (Count of patients with vital signs today)
+        $sudahDiperiksa = VitalSign::whereHas('pendaftaran', function($query) {
                 $query->whereDate('tanggal_kunjungan', today());
             })
-            ->latest()
-            ->take(5)
-            ->get();
+            ->count();
+
+        // 3. Total Pasien Hari Ini (Count of all registrations today)
+        $totalPasienHariIni = Pendaftaran::whereDate('tanggal_kunjungan', today())
+            ->count();
 
         return view('perawat.dashboard', compact(
             'antrianMenunggu',
-            'vitalSignHariIni',
-            'vitalSignSaya',
-            'pasienBelumVitalSign',
-            'statistikPerPoliklinik',
-            'recentVitalSigns'
+            'sudahDiperiksa',
+            'totalPasienHariIni'
         ));
     }
 }

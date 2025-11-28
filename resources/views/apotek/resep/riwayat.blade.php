@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antrian Pemeriksaan - Perawat</title>
+    <title>Riwayat Resep - Apotek</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('perawat.dashboard') }}"><i class="fas fa-user-nurse me-2"></i>MediCare Perawat</a>
+            <a class="navbar-brand" href="#"><i class="fas fa-clinic-medical me-2"></i>Apotek MediCare</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('perawat.dashboard') }}">Dashboard</a>
+                        <a class="nav-link" href="{{ route('apotek.resep.index') }}">Antrian Resep</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('perawat.pemeriksaan.index') }}">Antrian Pasien</a>
+                        <a class="nav-link" href="{{ route('apotek.obat.index') }}">Stok Obat</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('perawat.pemeriksaan.riwayat') }}">Riwayat</a>
+                        <a class="nav-link active" href="{{ route('apotek.resep.riwayat') }}">Riwayat</a>
                     </li>
                 </ul>
             </div>
@@ -34,11 +34,7 @@
     </nav>
 
     <div class="container">
-        <h2 class="mb-4">Antrian Pasien (Perlu Tanda Vital)</h2>
-
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
+        <h2 class="mb-4">Riwayat Resep Selesai</h2>
 
         <div class="card shadow-sm">
             <div class="card-body">
@@ -46,39 +42,35 @@
                     <table class="table table-hover">
                         <thead class="table-light">
                             <tr>
-                                <th>No Antrian</th>
-                                <th>Pasien</th>
-                                <th>Poliklinik</th>
-                                <th>Dokter Tujuan</th>
+                                <th>No. RM</th>
+                                <th>Nama Pasien</th>
+                                <th>Dokter</th>
+                                <th>Waktu Selesai</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($antrianMenunggu as $item)
+                            @forelse($resep as $item)
                             <tr>
-                                <td><span class="badge bg-secondary">{{ $item->no_antrian }}</span></td>
-                                <td>
-                                    <div class="fw-bold">{{ $item->pasien->nama_lengkap ?? $item->pasien->nama }}</div>
-                                    <small class="text-muted">{{ $item->pasien->no_rekam_medis ?? $item->pasien->no_rm }}</small>
-                                </td>
-                                <td>{{ $item->poliklinik }}</td>
+                                <td>{{ $item->pendaftaran->pasien->no_rekam_medis }}</td>
+                                <td>{{ $item->pendaftaran->pasien->nama }}</td>
                                 <td>{{ $item->dokter->name }}</td>
-                                <td><span class="badge bg-warning text-dark">Menunggu Perawat</span></td>
+                                <td>{{ $item->updated_at->format('d M Y H:i') }}</td>
+                                <td><span class="badge bg-success">Selesai</span></td>
                                 <td>
-                                    <a href="{{ route('perawat.pemeriksaan.create', $item) }}" class="btn btn-info btn-sm text-white">
-                                        <i class="fas fa-stethoscope me-1"></i> Periksa
-                                    </a>
+                                    <!-- Optional: View Detail -->
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="6" class="text-center text-muted py-4">Tidak ada antrian pasien saat ini.</td>
+                                <td colspan="6" class="text-center text-muted py-4">Belum ada riwayat resep.</td>
                             </tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
+                {{ $resep->links() }}
             </div>
         </div>
     </div>
