@@ -23,6 +23,8 @@
             min-height: 100vh;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: #1e293b;
+            display: flex;
+            flex-direction: column;
         }
         
         .navbar-custom {
@@ -53,176 +55,36 @@
         }
         
         .hero-section {
-            padding: 80px 0 60px;
+            padding: 100px 0 80px;
             text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .hero-title {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: 800;
             color: #0f172a;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             letter-spacing: -0.02em;
+            line-height: 1.2;
         }
         
         .hero-subtitle {
-            font-size: 18px;
-            color: #64748b;
-            margin-bottom: 60px;
-            font-weight: 400;
-        }
-        
-        .login-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-        
-        .login-card {
-            background: white;
-            border-radius: 16px;
-            padding: 32px 24px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            color: inherit;
-            border: 1px solid #e2e8f0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .login-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .login-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-            border-color: transparent;
-        }
-        
-        .login-card:hover::before {
-            opacity: 1;
-        }
-        
-        .login-card.petugas::before {
-            background: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%);
-        }
-        
-        .login-card.perawat::before {
-            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
-        }
-        
-        .login-card.dokter::before {
-            background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
-        }
-        
-        .card-icon-wrapper {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 20px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            transition: transform 0.3s;
-        }
-        
-        .login-card:hover .card-icon-wrapper {
-            transform: scale(1.1);
-        }
-        
-        .login-card.petugas .card-icon-wrapper {
-            background: #f5f3ff;
-            color: #8b5cf6;
-        }
-        
-        .login-card.perawat .card-icon-wrapper {
-            background: #f0fdf4;
-            color: #10b981;
-        }
-        
-        .login-card.dokter .card-icon-wrapper {
-            background: #fef2f2;
-            color: #ef4444;
-        }
-        
-        .card-title {
             font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #0f172a;
-        }
-        
-        .card-description {
             color: #64748b;
-            font-size: 14px;
-            margin-bottom: 24px;
-            line-height: 1.5;
-        }
-        
-        .btn-login {
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            border: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-            justify-content: center;
-        }
-        
-        .btn-petugas {
-            background: #8b5cf6;
-            color: white;
-        }
-        
-        .btn-petugas:hover {
-            background: #7c3aed;
-            color: white;
-            transform: scale(1.02);
-        }
-        
-        .btn-perawat {
-            background: #10b981;
-            color: white;
-        }
-        
-        .btn-perawat:hover {
-            background: #059669;
-            color: white;
-            transform: scale(1.02);
-        }
-        
-        .btn-dokter {
-            background: #ef4444;
-            color: white;
-        }
-        
-        .btn-dokter:hover {
-            background: #dc2626;
-            color: white;
-            transform: scale(1.02);
+            margin-bottom: 48px;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .features {
             background: white;
             padding: 80px 0;
-            margin-top: 80px;
         }
         
         .section-title {
@@ -235,20 +97,27 @@
         
         .feature-card {
             text-align: center;
-            padding: 24px;
+            padding: 32px 24px;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
         
         .feature-icon {
-            width: 56px;
-            height: 56px;
+            width: 64px;
+            height: 64px;
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border-radius: 12px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 24px;
             color: white;
-            font-size: 24px;
+            font-size: 28px;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
         }
         
         .feature-title {
@@ -260,7 +129,7 @@
         
         .feature-description {
             color: #64748b;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.6;
         }
         
@@ -269,7 +138,6 @@
             color: #94a3b8;
             text-align: center;
             padding: 32px 0;
-            margin-top: 80px;
         }
         
         .footer p {
@@ -277,18 +145,37 @@
             font-size: 14px;
         }
         
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border: none;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
+            color: white;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(59, 130, 246, 0.5);
+            color: white;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 32px;
+                font-size: 36px;
             }
             
             .hero-subtitle {
                 font-size: 16px;
-            }
-            
-            .login-cards {
-                grid-template-columns: 1fr;
-                max-width: 400px;
+                padding: 0 20px;
             }
         }
     </style>
@@ -307,51 +194,14 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="container">
-        <div class="hero-section">
-            <h1 class="hero-title">Sistem Rekam Medis Elektronik</h1>
-            <p class="hero-subtitle">Platform digital terintegrasi untuk manajemen data kesehatan yang efisien</p>
-            
-            <div class="login-cards">
-                <!-- Card Petugas -->
-                <a href="{{ route('login.petugas') }}" class="login-card petugas">
-                    <div class="card-icon-wrapper">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3 class="card-title">Petugas</h3>
-                    <p class="card-description">Pendaftaran dan manajemen data pasien</p>
-                    <button type="button" class="btn btn-login btn-petugas">
-                        <i class="fas fa-sign-in-alt"></i>
-                        Masuk sebagai Petugas
-                    </button>
-                </a>
-                
-                <!-- Card Perawat -->
-                <a href="{{ route('login.perawat') }}" class="login-card perawat">
-                    <div class="card-icon-wrapper">
-                        <i class="fas fa-user-nurse"></i>
-                    </div>
-                    <h3 class="card-title">Perawat</h3>
-                    <p class="card-description">Pemeriksaan vital signs pasien</p>
-                    <button type="button" class="btn btn-login btn-perawat">
-                        <i class="fas fa-sign-in-alt"></i>
-                        Masuk sebagai Perawat
-                    </button>
-                </a>
-                
-                <!-- Card Dokter -->
-                <a href="{{ route('login.dokter') }}" class="login-card dokter">
-                    <div class="card-icon-wrapper">
-                        <i class="fas fa-user-md"></i>
-                    </div>
-                    <h3 class="card-title">Dokter</h3>
-                    <p class="card-description">Diagnosis dan resep pengobatan</p>
-                    <button type="button" class="btn btn-login btn-dokter">
-                        <i class="fas fa-sign-in-alt"></i>
-                        Masuk sebagai Dokter
-                    </button>
-                </a>
-            </div>
+    <div class="container hero-section">
+        <h1 class="hero-title">Sistem Rekam Medis<br>Elektronik Terpadu</h1>
+        <p class="hero-subtitle">Platform digital modern untuk manajemen data kesehatan yang efisien, aman, dan terintegrasi untuk pelayanan medis yang lebih baik.</p>
+        
+        <div>
+            <a href="{{ route('login') }}" class="btn-primary-custom">
+                <i class="fas fa-sign-in-alt"></i> Masuk ke Sistem
+            </a>
         </div>
     </div>
     
@@ -366,7 +216,7 @@
                             <i class="fas fa-database"></i>
                         </div>
                         <h4 class="feature-title">Data Terintegrasi</h4>
-                        <p class="feature-description">Semua data pasien tersimpan dalam satu sistem terpusat</p>
+                        <p class="feature-description">Sentralisasi data pasien untuk kemudahan akses dan pengelolaan rekam medis.</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
@@ -375,7 +225,7 @@
                             <i class="fas fa-shield-alt"></i>
                         </div>
                         <h4 class="feature-title">Keamanan Data</h4>
-                        <p class="feature-description">Sistem keamanan berlapis untuk melindungi privasi pasien</p>
+                        <p class="feature-description">Proteksi data medis dengan standar keamanan tinggi dan enkripsi.</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
@@ -383,8 +233,8 @@
                         <div class="feature-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
-                        <h4 class="feature-title">Analisis Data</h4>
-                        <p class="feature-description">Dashboard dan laporan untuk analisis kesehatan</p>
+                        <h4 class="feature-title">Analisis Cerdas</h4>
+                        <p class="feature-description">Dashboard informatif untuk memantau statistik dan tren kesehatan.</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
@@ -392,8 +242,8 @@
                         <div class="feature-icon">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h4 class="feature-title">Multi Platform</h4>
-                        <p class="feature-description">Akses mudah dari berbagai perangkat</p>
+                        <h4 class="feature-title">Akses Multi-Device</h4>
+                        <p class="feature-description">Fleksibilitas akses sistem dari desktop, tablet, maupun smartphone.</p>
                     </div>
                 </div>
             </div>
@@ -403,7 +253,7 @@
     <!-- Footer -->
     <div class="footer">
         <div class="container">
-            <p>&copy; {{ date('Y') }} Sistem Rekam Medis Elektronik. Dibuat untuk tugas kuliah.</p>
+            <p>&copy; {{ date('Y') }} Sistem Rekam Medis Elektronik. Developed with <i class="fas fa-heart text-danger"></i> for Healthcare.</p>
         </div>
     </div>
     

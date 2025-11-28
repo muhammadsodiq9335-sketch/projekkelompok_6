@@ -21,9 +21,7 @@ Route::get('/', function () {
 });
 
 // Auth Routes
-Route::get('/login/petugas', [AuthController::class, 'showLoginPetugas'])->name('login.petugas');
-Route::get('/login/perawat', [AuthController::class, 'showLoginPerawat'])->name('login.perawat');
-Route::get('/login/dokter', [AuthController::class, 'showLoginDokter'])->name('login.dokter');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
