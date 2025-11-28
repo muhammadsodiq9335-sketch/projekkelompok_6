@@ -1,7 +1,8 @@
-@extends('layouts.petugas')
+@extends('layouts.modern')
 
 @section('title', 'Detail Pembayaran')
 @section('header-title', 'Detail Pembayaran')
+@section('breadcrumb', 'Kasir / Detail Pembayaran')
 
 @section('content')
 <div class="row justify-content-center">

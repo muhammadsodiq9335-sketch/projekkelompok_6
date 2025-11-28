@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Informasi Klinik - MediCare</title>
+    <title>Sistem Informasi Klinik - RS PROJEK WEB 6</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -67,20 +67,6 @@
             background: #4338ca;
             color: white;
             box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-primary" href="#">
-                <i class="fas fa-hospital-alt me-2"></i>MediCare
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
                     @if (Route::has('login'))
                         @auth
                             <li class="nav-item">
@@ -143,7 +129,7 @@
 
     <footer class="bg-white py-4 mt-auto border-top">
         <div class="container text-center text-muted">
-            <small>&copy; {{ date('Y') }} MediCare Clinic System. All rights reserved.</small>
+            <small>&copy; {{ date('Y') }} RS PROJEK WEB 6. All rights reserved.</small>
         </div>
     </footer>
 

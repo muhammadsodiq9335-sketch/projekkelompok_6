@@ -1,7 +1,8 @@
-@extends('layouts.petugas')
+@extends('layouts.modern')
 
 @section('title', 'Kasir / Pembayaran')
 @section('header-title', 'Kasir / Pembayaran')
+@section('breadcrumb', 'Kasir')
 
 @section('content')
 <div class="card border-0 shadow-sm">

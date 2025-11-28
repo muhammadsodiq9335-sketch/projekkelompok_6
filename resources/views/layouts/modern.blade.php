@@ -264,6 +264,12 @@
                         <span>Data Pasien</span>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="{{ route('petugas.pembayaran.index') }}" class="menu-link {{ request()->routeIs('petugas.pembayaran.*') ? 'active' : '' }}">
+                        <i class="fas fa-cash-register menu-icon"></i>
+                        <span>Kasir</span>
+                    </a>
+                </li>
             @elseif(Auth::user()->role == 'perawat')
                 <li class="menu-item">
                     <a href="{{ route('perawat.dashboard') }}" class="menu-link {{ request()->routeIs('perawat.dashboard') ? 'active' : '' }}">

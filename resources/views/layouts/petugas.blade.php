@@ -239,8 +239,8 @@
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
             </li>
-             <li class="menu-item">
-                <a href="#" class="menu-link">
+            <li class="menu-item">
+                <a href="{{ route('petugas.pembayaran.index') }}" class="menu-link {{ request()->routeIs('petugas.pembayaran.*') ? 'active' : '' }}">
                     <span class="menu-icon"><i class="fas fa-cash-register"></i></span>
                     <span>Kasir</span>
                 </a>

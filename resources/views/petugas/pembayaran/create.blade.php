@@ -1,7 +1,8 @@
-@extends('layouts.petugas')
+@extends('layouts.modern')
 
 @section('title', 'Proses Pembayaran')
 @section('header-title', 'Proses Pembayaran')
+@section('breadcrumb', 'Kasir / Proses Pembayaran')
 
 @section('content')
 <div class="row">

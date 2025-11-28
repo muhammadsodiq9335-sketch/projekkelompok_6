@@ -1,86 +1,66 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antrian Pemeriksaan - Perawat</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('perawat.dashboard') }}"><i class="fas fa-user-nurse me-2"></i>MediCare Perawat</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('perawat.dashboard') }}">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('perawat.pemeriksaan.index') }}">Antrian Pasien</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('perawat.pemeriksaan.riwayat') }}">Riwayat</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="ms-auto">
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button class="btn btn-outline-light btn-sm">Logout</button>
-                </form>
-            </div>
-        </div>
-    </nav>
+@extends('layouts.modern')
 
-    <div class="container">
-        <h2 class="mb-4">Antrian Pasien (Perlu Tanda Vital)</h2>
+@section('title', 'Antrian Pemeriksaan - Perawat')
+@section('header-title', 'Antrian Pemeriksaan')
+@section('breadcrumb', 'Pemeriksaan')
 
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
+@section('content')
+    <div class="row">
+        <div class="col-md-12">
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
 
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead class="table-light">
-                            <tr>
-                                <th>No Antrian</th>
-                                <th>Pasien</th>
-                                <th>Poliklinik</th>
-                                <th>Dokter Tujuan</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($antrianMenunggu as $item)
-                            <tr>
-                                <td><span class="badge bg-secondary">{{ $item->no_antrian }}</span></td>
-                                <td>
-                                    <div class="fw-bold">{{ $item->pasien->nama_lengkap ?? $item->pasien->nama }}</div>
-                                    <small class="text-muted">{{ $item->pasien->no_rekam_medis ?? $item->pasien->no_rm }}</small>
-                                </td>
-                                <td>{{ $item->poliklinik }}</td>
-                                <td>{{ $item->dokter->name }}</td>
-                                <td><span class="badge bg-warning text-dark">Menunggu Perawat</span></td>
-                                <td>
-                                    <a href="{{ route('perawat.pemeriksaan.create', $item) }}" class="btn btn-info btn-sm text-white">
-                                        <i class="fas fa-stethoscope me-1"></i> Periksa
-                                    </a>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="6" class="text-center text-muted py-4">Tidak ada antrian pasien saat ini.</td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+            <div class="card-custom">
+                <div class="card-header-custom bg-info text-white">
+                    <i class="fas fa-user-nurse me-2"></i>Antrian Pasien (Perlu Tanda Vital)
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="px-4 py-3">No Antrian</th>
+                                    <th class="px-4 py-3">Pasien</th>
+                                    <th class="px-4 py-3">Poliklinik</th>
+                                    <th class="px-4 py-3">Dokter Tujuan</th>
+                                    <th class="px-4 py-3">Status</th>
+                                    <th class="px-4 py-3 text-end">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($antrianMenunggu as $item)
+                                <tr>
+                                    <td class="px-4 py-3"><span class="badge bg-secondary">{{ $item->no_antrian }}</span></td>
+                                    <td class="px-4 py-3">
+                                        <div class="fw-bold">{{ $item->pasien->nama_lengkap ?? $item->pasien->nama }}</div>
+                                        <small class="text-muted">{{ $item->pasien->no_rekam_medis ?? $item->pasien->no_rm }}</small>
+                                    </td>
+                                    <td class="px-4 py-3">{{ $item->poliklinik }}</td>
+                                    <td class="px-4 py-3">{{ $item->dokter->name }}</td>
+                                    <td class="px-4 py-3"><span class="badge bg-warning text-dark">Menunggu Perawat</span></td>
+                                    <td class="px-4 py-3 text-end">
+                                        <a href="{{ route('perawat.pemeriksaan.create', $item) }}" class="btn btn-info btn-sm text-white">
+                                            <i class="fas fa-stethoscope me-1"></i> Periksa
+                                        </a>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted py-5">
+                                        <i class="fas fa-clipboard-check fa-3x mb-3 text-light"></i>
+                                        <p>Tidak ada antrian pasien saat ini.</p>
+                                    </td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+@endsection
