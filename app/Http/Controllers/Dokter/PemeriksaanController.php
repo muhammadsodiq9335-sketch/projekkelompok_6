@@ -66,7 +66,7 @@ class PemeriksaanController extends Controller
             'aturan_pakai.*' => 'string',
         ]);
 
-        DB::beginTransaction();
+        // DB::beginTransaction();
 
         try {
             // 1. Simpan Pemeriksaan
@@ -114,15 +114,19 @@ class PemeriksaanController extends Controller
             }
 
             // 3. Update Status Pendaftaran
-            Pendaftaran::where('id', $request->pendaftaran_id)->update(['status' => 'Selesai']);
+            if (isset($hasObat) && $hasObat) {
+                Pendaftaran::where('id', $request->pendaftaran_id)->update(['status' => 'Menunggu Obat']);
+            } else {
+                Pendaftaran::where('id', $request->pendaftaran_id)->update(['status' => 'Menunggu Pembayaran']);
+            }
 
-            DB::commit();
+            // DB::commit();
 
             return redirect()->route('dokter.pemeriksaan.index')
                 ->with('success', 'Pemeriksaan dan Resep berhasil disimpan!');
 
         } catch (\Exception $e) {
-            DB::rollback();
+            // DB::rollback();
             return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
         }
     }
