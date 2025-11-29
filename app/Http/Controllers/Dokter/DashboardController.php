@@ -69,7 +69,7 @@ class DashboardController extends Controller
             'pemeriksaanHariIni',
             'totalPasienHariIni',
             'pasienSelesai',
-            'diagnosaTerbanyak',
+            'diagnosisTerbanyak',
             'recentPemeriksaan',
             'statistikBulanan'
         ));
