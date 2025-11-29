@@ -220,7 +220,7 @@
                     <span class="d-none d-sm-inline">{{ Auth::user()->name ?? 'User' }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
@@ -320,13 +320,13 @@
                 </li>
             @endif
 
-            <li class="menu-header">LAINNYA</li>
+            {{-- <li class="menu-header">LAINNYA</li>
             <li class="menu-item">
                 <a href="#" class="menu-link">
                     <i class="fas fa-calendar-alt menu-icon"></i>
                     <span>Jadwal Kegiatan</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </aside>
 

@@ -34,6 +34,7 @@ Route::get('/', function () {
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::middleware('auth')->get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
 
 // Specific Login Routes
 Route::get('/login/super-admin', [AuthController::class, 'showLoginSuperAdmin'])->name('login.super_admin');
