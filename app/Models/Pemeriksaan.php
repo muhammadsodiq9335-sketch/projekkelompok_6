@@ -38,4 +38,9 @@ class Pemeriksaan extends Model
     {
         return $this->belongsTo(User::class, 'dokter_id');
     }
+
+    public function resep()
+    {
+        return $this->hasOne(Resep::class, 'pendaftaran_id', 'pendaftaran_id');
+    }
 }

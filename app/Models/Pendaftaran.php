@@ -64,6 +64,11 @@ class Pendaftaran extends Model
         return $this->hasOne(Pembayaran::class);
     }
 
+    public function resep()
+    {
+        return $this->hasOne(Resep::class);
+    }
+
     protected static function boot()
     {
         parent::boot();

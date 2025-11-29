@@ -1,4 +1,4 @@
-@extends('layouts.petugas')
+@extends('layouts.modern')
 
 @section('title', 'Laporan Kunjungan')
 @section('header-title', 'Laporan Kunjungan')
