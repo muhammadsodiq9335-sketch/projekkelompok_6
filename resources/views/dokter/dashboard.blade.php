@@ -92,7 +92,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="4" class="text-center py-4 text-muted">Tidak ada antrian pasien saat ini.</td>
+                                    <td colspan="4" class="text-center py-4 text-muted">Tidak ada antrian pasien saat ini</td>
                                 </tr>
                                 @endforelse
                             </tbody>
