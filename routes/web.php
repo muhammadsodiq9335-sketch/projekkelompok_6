@@ -61,6 +61,11 @@ Route::middleware(['auth', PetugasMiddleware::class])->prefix('petugas')->name('
     Route::post('/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
     Route::get('/pembayaran/{pembayaran}', [PembayaranController::class, 'show'])->name('pembayaran.show');
     Route::get('/pembayaran/{pembayaran}/print', [PembayaranController::class, 'print'])->name('pembayaran.print');
+    Route::get('/pembayaran/{pembayaran}/print', [PembayaranController::class, 'print'])->name('pembayaran.print');
+
+    // Laporan
+    Route::get('/laporan', [App\Http\Controllers\Petugas\LaporanController::class, 'index'])->name('laporan.index');
+    Route::get('/laporan/export', [App\Http\Controllers\Petugas\LaporanController::class, 'export'])->name('laporan.export');
 });
 
 // Perawat Routes
