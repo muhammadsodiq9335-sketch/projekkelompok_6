@@ -126,45 +126,78 @@
         </div>
     </div>
 
-    <!-- Riwayat Pemeriksaan Terakhir -->
-    <div class="card-custom">
-        <div class="card-header-custom">
-            Pemeriksaan Terakhir
+    <div class="row">
+        <!-- Riwayat Pemeriksaan Terakhir -->
+        <div class="col-md-8 mb-4">
+            <div class="card-custom h-100">
+                <div class="card-header-custom">
+                    Pemeriksaan Terakhir
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover m-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="px-4 py-3">Tanggal</th>
+                                    <th class="px-4 py-3">Nama Pasien</th>
+                                    <th class="px-4 py-3">Diagnosa</th>
+                                    <th class="px-4 py-3">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($recentPemeriksaan as $pemeriksaan)
+                                <tr>
+                                    <td class="px-4 py-3">{{ $pemeriksaan->created_at->format('d/m/Y H:i') }}</td>
+                                    <td class="px-4 py-3 fw-bold">{{ $pemeriksaan->pendaftaran->pasien->nama_lengkap ?? $pemeriksaan->pendaftaran->pasien->nama }}</td>
+                                    <td class="px-4 py-3">{{ Str::limit($pemeriksaan->diagnosis_utama, 30) }}</td>
+                                    <td class="px-4 py-3">
+                                        <a href="{{ route('dokter.pemeriksaan.show', $pemeriksaan->id) }}" class="btn btn-sm btn-info text-white">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="4" class="text-center py-4 text-muted">Belum ada pemeriksaan.</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body p-0">
-            <div class="table-responsive">
-                <table class="table table-hover m-0">
-                    <thead class="bg-light">
-                        <tr>
-                            <th class="px-4 py-3">Tanggal</th>
-                            <th class="px-4 py-3">Nama Pasien</th>
-                            <th class="px-4 py-3">Diagnosa</th>
-                            <th class="px-4 py-3">Status</th>
-                            <th class="px-4 py-3">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($recentPemeriksaan as $pemeriksaan)
-                        <tr>
-                            <td class="px-4 py-3">{{ $pemeriksaan->created_at->format('d/m/Y H:i') }}</td>
-                            <td class="px-4 py-3 fw-bold">{{ $pemeriksaan->pendaftaran->pasien->nama_lengkap ?? $pemeriksaan->pendaftaran->pasien->nama }}</td>
-                            <td class="px-4 py-3">{{ Str::limit($pemeriksaan->diagnosis_utama, 30) }}</td>
-                            <td class="px-4 py-3">
-                                <span class="badge bg-success">Selesai</span>
-                            </td>
-                            <td class="px-4 py-3">
-                                <a href="{{ route('dokter.pemeriksaan.show', $pemeriksaan->id) }}" class="btn btn-sm btn-info text-white">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="5" class="text-center py-4 text-muted">Belum ada pemeriksaan.</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+
+        <!-- Statistik Bulanan -->
+        <div class="col-md-4 mb-4">
+            <div class="card-custom h-100">
+                <div class="card-header-custom">
+                    Statistik Bulan Ini
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover m-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="px-4 py-2">Tanggal</th>
+                                    <th class="px-4 py-2 text-end">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($statistikBulanan as $stat)
+                                <tr>
+                                    <td class="px-4 py-2">{{ \Carbon\Carbon::parse($stat->tanggal)->format('d M Y') }}</td>
+                                    <td class="px-4 py-2 text-end fw-bold">{{ $stat->total }}</td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="2" class="text-center py-3 text-muted small">Belum ada data.</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
