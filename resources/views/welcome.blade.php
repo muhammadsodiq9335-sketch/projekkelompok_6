@@ -112,7 +112,7 @@
                         <i class="fas fa-user-md"></i>
                     </div>
                     <h4>Rekam Medis Elektronik</h4>
-                    <p class="text-muted">Dokter dapat mencatat diagnosa, tindakan, dan resep obat secara digital dan terstruktur.</p>
+                    <p class="text-muted">Dokter dapat mencatat diagnosis, tindakan, dan resep obat secara digital dan terstruktur.</p>
                 </div>
             </div>
             <div class="col-md-4">

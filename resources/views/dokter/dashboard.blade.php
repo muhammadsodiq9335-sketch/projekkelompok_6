@@ -14,7 +14,7 @@
                 </div>
                 <div class="stat-details">
                     <h3>{{ $antrianMenunggu->count() ?? 0 }}</h3>
-                    <p>Antrian Menunggu</p>
+                    <p> Menunggu Antrian</p>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
                     <i class="fas fa-check-circle"></i>
                 </div>
                 <div class="stat-details">
-                    <h3>{{ $pasienSelesai ?? 0 }}</h3>
+                    <h3>{{ $pasienselesai ?? 0 }}</h3>
                     <p>Pasien Selesai</p>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="4" class="text-center py-4 text-muted">Tidak ada antrian pasien saat ini.</td>
+                                    <td colspan="4" class="text-center py-4 text-muted">Tidak ada antrian pasien saat ini</td>
                                 </tr>
                                 @endforelse
                             </tbody>
