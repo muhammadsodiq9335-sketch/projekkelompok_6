@@ -125,7 +125,7 @@
             
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required placeholder="••••••••">
+                <input type="password" class="form-control" id="password" name="password" required placeholder="Masukkan Password Anda">
             </div>
             
             <div class="mb-3 form-check">
