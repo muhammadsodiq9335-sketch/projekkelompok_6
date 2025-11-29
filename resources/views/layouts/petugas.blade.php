@@ -176,7 +176,7 @@
             </li>
             
             <li class="menu-item">
-                <a href="#menuPendaftaran" data-bs-toggle="collapse" class="menu-link {{ request()->routeIs('petugas.pendaftaran.*') ? '' : 'collapsed' }}" aria-expanded="{{ request()->routeIs('petugas.pendaftaran.*') ? 'true' : 'false' }}">
+                <a href="#menuPendaftaran" data-bs-toggle="collapse" class="menu-link {{ request()->routeIs('petugas.pendaftaran.') ? '' : 'collapsed' }}" aria-expanded="{{ request()->routeIs('petugas.pendaftaran.') ? 'true' : 'false' }}">
                     <span class="menu-icon"><i class="fas fa-clipboard-list"></i></span>
                     <span>Pendaftaran</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
@@ -194,7 +194,7 @@
             </li>
             
             <li class="menu-item">
-                <a href="#menuPasien" data-bs-toggle="collapse" class="menu-link {{ request()->routeIs('petugas.pasien.*') ? '' : 'collapsed' }}" aria-expanded="{{ request()->routeIs('petugas.pasien.*') ? 'true' : 'false' }}">
+                <a href="#menuPasien" data-bs-toggle="collapse" class="menu-link {{ request()->routeIs('petugas.pasien.') ? '' : 'collapsed' }}" aria-expanded="{{ request()->routeIs('petugas.pasien.') ? 'true' : 'false' }}">
                     <span class="menu-icon"><i class="fas fa-users"></i></span>
                     <span>Pasien</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
