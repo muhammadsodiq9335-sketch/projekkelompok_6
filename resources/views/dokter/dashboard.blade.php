@@ -140,7 +140,7 @@
                                 <tr>
                                     <th class="px-4 py-3">Tanggal</th>
                                     <th class="px-4 py-3">Nama Pasien</th>
-                                    <th class="px-4 py-3">Diagnosa</th>
+                                    <th class="px-4 py-3">Diagnosis</th>
                                     <th class="px-4 py-3">Aksi</th>
                                 </tr>
                             </thead>
