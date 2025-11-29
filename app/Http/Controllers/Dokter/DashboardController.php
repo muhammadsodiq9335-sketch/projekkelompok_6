@@ -39,7 +39,7 @@ class DashboardController extends Controller
             ->where('status', 'Selesai')
             ->count();
 
-        $diagnosaTerbanyak = Pemeriksaan::select('diagnosis_utama', DB::raw('count(*) as total'))
+        $diagnosisTerbanyak = Pemeriksaan::select('diagnosis_utama', DB::raw('count(*) as total'))
             ->where('dokter_id', $dokterId)
             ->whereMonth('created_at', $currentMonth)
             ->groupBy('diagnosis_utama')
@@ -69,7 +69,7 @@ class DashboardController extends Controller
             'pemeriksaanHariIni',
             'totalPasienHariIni',
             'pasienSelesai',
-            'diagnosaTerbanyak',
+            'diagnosisTerbanyak',
             'recentPemeriksaan',
             'statistikBulanan'
         ));
