@@ -106,7 +106,7 @@
         <div class="col-md-4 mb-4">
             <div class="card-custom h-100">
                 <div class="card-header-custom">
-                    Diagnosa Terbanyak Bulan Ini
+                    Diagnosis Terbanyak Bulan Ini
                 </div>
                 <div class="card-body">
                     @if($diagnosisTerbanyak->count() > 0)
