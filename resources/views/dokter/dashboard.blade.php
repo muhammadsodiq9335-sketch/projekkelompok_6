@@ -64,7 +64,7 @@
         <div class="col-md-8 mb-4">
             <div class="card-custom h-100">
                 <div class="card-header-custom d-flex justify-content-between align-items-center">
-                    <span>Antrian Pasien Menunggu</span>
+                    <span>Antrian Pasien</span>
                     <a href="{{ route('dokter.pemeriksaan.index') }}" class="btn btn-sm btn-light text-primary">Lihat Semua</a>
                 </div>
                 <div class="card-body p-0">
