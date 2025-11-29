@@ -240,6 +240,12 @@
                 </a>
             </li>
             <li class="menu-item">
+                <a href="{{ route('petugas.laporan.index') }}" class="menu-link {{ request()->routeIs('petugas.laporan.*') ? 'active' : '' }}">
+                    <span class="menu-icon"><i class="fas fa-file-alt"></i></span>
+                    <span>Laporan</span>
+                </a>
+            </li>
+            <li class="menu-item">
                 <a href="{{ route('petugas.pembayaran.index') }}" class="menu-link {{ request()->routeIs('petugas.pembayaran.*') ? 'active' : '' }}">
                     <span class="menu-icon"><i class="fas fa-cash-register"></i></span>
                     <span>Kasir</span>
