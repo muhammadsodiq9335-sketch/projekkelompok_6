@@ -52,7 +52,7 @@
                     <i class="fas fa-check-circle"></i>
                 </div>
                 <div class="stat-details">
-                    <h3>{{ $pasienSelesai ?? 0 }}</h3>
+                    <h3>{{ $pasienselesai ?? 0 }}</h3>
                     <p>Pasien Selesai</p>
                 </div>
             </div>
