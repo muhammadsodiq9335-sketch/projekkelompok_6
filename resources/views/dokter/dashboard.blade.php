@@ -110,6 +110,9 @@
                 </div>
                 <div class="card-body">
                     @if($diagnosisTerbanyak->count() > 0)
+                        <div class="mb-3" style="height: 250px; position: relative;">
+                            <canvas id="diagnosisChart"></canvas>
+                        </div>
                         <ul class="list-group list-group-flush">
                             @foreach($diagnosisTerbanyak as $diagnosa)
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
@@ -140,7 +143,7 @@
                                 <tr>
                                     <th class="px-4 py-3">Tanggal</th>
                                     <th class="px-4 py-3">Nama Pasien</th>
-                                    <th class="px-4 py-3">Diagnosis</th>
+                                    <th class="px-4 py-3">Diagnosa</th>
                                     <th class="px-4 py-3">Aksi</th>
                                 </tr>
                             </thead>
@@ -201,4 +204,50 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        @if($diagnosisTerbanyak->count() > 0)
+            const ctx = document.getElementById('diagnosisChart').getContext('2d');
+            const labels = {!! json_encode($diagnosisTerbanyak->pluck('diagnosis_utama')) !!};
+            const data = {!! json_encode($diagnosisTerbanyak->pluck('total')) !!};
+            
+            // Generate random colors
+            const backgroundColors = [
+                '#0d6efd', '#6610f2', '#6f42c1', '#d63384', '#dc3545', 
+                '#fd7e14', '#ffc107', '#198754', '#20c997', '#0dcaf0'
+            ];
+
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: backgroundColors.slice(0, data.length),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 12,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        @endif
+    });
+</script>
 @endsection
