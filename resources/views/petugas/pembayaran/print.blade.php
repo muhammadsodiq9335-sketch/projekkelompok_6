@@ -18,6 +18,58 @@
             border-bottom: 1px dashed #000;
             padding-bottom: 10px;
         }
+        .header h2 {
+            margin: 0;
+            font-size: 16px;
+        }
+        .info {
+            margin-bottom: 10px;
+        }
+        .info table {
+            width: 100%;
+        }
+        .items {
+            width: 100%;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #000;
+            padding-bottom: 10px;
+        }
+        .items th {
+            text-align: left;
+        }
+        .items td {
+            vertical-align: top;
+        }
+        .total {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 10px;
+        }
+        @media print {
+            @page {
+                margin: 0;
+            }
+            body {
+                margin: 0;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body onload="window.print()">
+
+    <div class="header">
+        <h2>PROJEK KELOMPOK 6</h2>
+        <p>Jl. Sehat Selalu No. 123<br>Telp: (021) 1234567</p>
+    </div>
+
+    <div class="info">
+        <table>
+            <tr>
                 <td>No. Transaksi</td>
                 <td align="right">#{{ str_pad($pembayaran->id, 6, '0', STR_PAD_LEFT) }}</td>
             </tr>
