@@ -109,9 +109,9 @@
                     Diagnosa Terbanyak Bulan Ini
                 </div>
                 <div class="card-body">
-                    @if($diagnosaTerbanyak->count() > 0)
+                    @if($diagnosisTerbanyak->count() > 0)
                         <ul class="list-group list-group-flush">
-                            @foreach($diagnosaTerbanyak as $diagnosa)
+                            @foreach($diagnosisTerbanyak as $diagnosa)
                                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                                     {{ $diagnosa->diagnosis_utama }}
                                     <span class="badge bg-primary rounded-pill">{{ $diagnosa->total }}</span>
