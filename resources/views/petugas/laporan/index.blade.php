@@ -1,45 +1,44 @@
-@extends('layouts.modern')
+@extends('layouts.petugas')
 
 @section('title', 'Laporan Kunjungan')
 @section('header-title', 'Laporan Kunjungan')
-@section('breadcrumb', 'Laporan')
 
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="card-custom">
-            <div class="card-header-custom d-flex justify-content-between align-items-center">
-                <span>Data Kunjungan Pasien</span>
-                <a href="{{ route('petugas.laporan.export') }}" class="btn btn-success btn-sm">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 text-muted">Data Kunjungan Pasien</h5>
+                <a href="{{ route('petugas.laporan.export') }}" class="btn btn-success">
                     <i class="fas fa-file-excel me-2"></i>Export Excel
                 </a>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover m-0">
-                        <thead class="bg-light">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
                             <tr>
-                                <th class="px-4 py-3">No</th>
-                                <th class="px-4 py-3">No Antrian</th>
-                                <th class="px-4 py-3">No RM</th>
-                                <th class="px-4 py-3">Nama Pasien</th>
-                                <th class="px-4 py-3">Poliklinik</th>
-                                <th class="px-4 py-3">Dokter</th>
-                                <th class="px-4 py-3">Tanggal</th>
-                                <th class="px-4 py-3">Status</th>
+                                <th>No</th>
+                                <th>No Antrian</th>
+                                <th>No RM</th>
+                                <th>Nama Pasien</th>
+                                <th>Poliklinik</th>
+                                <th>Dokter</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($pendaftarans as $pendaftaran)
                             <tr>
-                                <td class="px-4 py-3">{{ $loop->iteration + ($pendaftarans->currentPage() - 1) * $pendaftarans->perPage() }}</td>
-                                <td class="px-4 py-3"><span class="badge bg-primary">{{ $pendaftaran->no_antrian }}</span></td>
-                                <td class="px-4 py-3">{{ $pendaftaran->pasien->no_rm ?? '-' }}</td>
-                                <td class="px-4 py-3 fw-bold">{{ $pendaftaran->pasien->nama_lengkap ?? '-' }}</td>
-                                <td class="px-4 py-3">{{ $pendaftaran->poliklinik }}</td>
-                                <td class="px-4 py-3">{{ $pendaftaran->dokter->name ?? '-' }}</td>
-                                <td class="px-4 py-3">{{ $pendaftaran->tanggal_kunjungan->format('d/m/Y') }}</td>
-                                <td class="px-4 py-3">
+                                <td>{{ $loop->iteration + ($pendaftarans->currentPage() - 1) * $pendaftarans->perPage() }}</td>
+                                <td><span class="badge bg-light text-dark border">{{ $pendaftaran->no_antrian }}</span></td>
+                                <td>{{ $pendaftaran->pasien->no_rm ?? '-' }}</td>
+                                <td class="fw-medium">{{ $pendaftaran->pasien->nama_lengkap ?? '-' }}</td>
+                                <td>{{ $pendaftaran->poliklinik }}</td>
+                                <td>{{ $pendaftaran->dokter->name ?? '-' }}</td>
+                                <td>{{ $pendaftaran->tanggal_kunjungan->format('d/m/Y') }}</td>
+                                <td>
                                     @if($pendaftaran->status == 'selesai')
                                         <span class="badge bg-success">Selesai</span>
                                     @elseif($pendaftaran->status == 'menunggu')
@@ -62,7 +61,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="p-3">
+                <div class="mt-3">
                     {{ $pendaftarans->links() }}
                 </div>
             </div>
