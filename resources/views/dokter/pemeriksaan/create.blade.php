@@ -185,7 +185,7 @@
     </div>
 </template>
 
-@push('scripts')
+@section('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('obat-container');
@@ -220,5 +220,5 @@
         addButton.click();
     });
 </script>
-@endpush
+@endsection
 @endsection
