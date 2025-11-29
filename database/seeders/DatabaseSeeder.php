@@ -37,5 +37,6 @@ class DatabaseSeeder extends Seeder
             'role' => 'petugas',
             'password' => 'password',
         ]);
+
     }
 }
