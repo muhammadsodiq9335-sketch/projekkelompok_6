@@ -12,48 +12,29 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $perawatId = Auth::id();
+
+        // 1. Antrian Menunggu (Assigned to me, Waiting, No Vital Sign)
         $antrianMenunggu = Pendaftaran::where('status', 'Menunggu')
             ->whereDate('tanggal_kunjungan', today())
+            ->where('perawat_id', $perawatId)
             ->whereDoesntHave('vitalSign')
-            ->count();
-
-        $vitalSignHariIni = VitalSign::whereHas('pendaftaran', function($query) {
-                $query->whereDate('tanggal_kunjungan', today());
-            })
-            ->count();
-
-        $vitalSignSaya = VitalSign::where('perawat_id', Auth::id())
-            ->whereHas('pendaftaran', function($query) {
-                $query->whereDate('tanggal_kunjungan', today());
-            })
-            ->count();
-
-        $pasienBelumVitalSign = Pendaftaran::whereDate('tanggal_kunjungan', today())
-            ->whereDoesntHave('vitalSign')
-            ->where('status', '!=', 'Batal')
-            ->count();
-
-        $statistikPerPoliklinik = Pendaftaran::select('poliklinik', DB::raw('count(*) as total'))
-            ->whereDate('tanggal_kunjungan', today())
-            ->whereHas('vitalSign')
-            ->groupBy('poliklinik')
             ->get();
 
-        $recentVitalSigns = VitalSign::with(['pendaftaran.pasien', 'perawat'])
-            ->whereHas('pendaftaran', function($query) {
-                $query->whereDate('tanggal_kunjungan', today());
-            })
-            ->latest()
-            ->take(5)
-            ->get();
+        // 2. Sudah Diperiksa (Vital Signs performed by me today)
+        $sudahDiperiksa = VitalSign::where('perawat_id', $perawatId)
+            ->whereDate('created_at', today())
+            ->count();
+
+        // 3. Total Pasien Hari Ini (Assigned to me today)
+        $totalPasienHariIni = Pendaftaran::whereDate('tanggal_kunjungan', today())
+            ->where('perawat_id', $perawatId)
+            ->count();
 
         return view('perawat.dashboard', compact(
             'antrianMenunggu',
-            'vitalSignHariIni',
-            'vitalSignSaya',
-            'pasienBelumVitalSign',
-            'statistikPerPoliklinik',
-            'recentVitalSigns'
+            'sudahDiperiksa',
+            'totalPasienHariIni'
         ));
     }
 }

@@ -13,9 +13,11 @@ class PemeriksaanController extends Controller
     public function index()
     {
         $today = today();
+        $perawatId = Auth::id();
 
         $antrianMenunggu = Pendaftaran::with(['pasien', 'dokter'])
             ->whereDate('tanggal_kunjungan', $today)
+            ->where('perawat_id', $perawatId)
             ->whereDoesntHave('vitalSign')
             ->where('status', '!=', 'Batal')
             ->orderBy('jam_kunjungan')

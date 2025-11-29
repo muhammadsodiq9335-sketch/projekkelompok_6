@@ -9,27 +9,33 @@ use App\Http\Controllers\Perawat\DashboardController as PerawatDashboard;
 use App\Http\Controllers\Perawat\PemeriksaanController as PerawatPemeriksaan;
 use App\Http\Controllers\Dokter\DashboardController as DokterDashboard;
 use App\Http\Controllers\Dokter\PemeriksaanController as DokterPemeriksaan;
+use App\Http\Controllers\Apotek\ObatController as ApotekObat;
+use App\Http\Controllers\Apotek\ResepController as ApotekResep;
 
 // Tambahkan namespace untuk Middleware
 use App\Http\Middleware\PetugasMiddleware;
 use App\Http\Middleware\PerawatMiddleware;
 use App\Http\Middleware\DokterMiddleware;
+use App\Http\Middleware\ApotekerMiddleware;
+use App\Http\Middleware\SuperAdminMiddleware;
+use App\Http\Controllers\SuperAdmin\DashboardController as SuperAdminDashboard;
+use App\Http\Controllers\SuperAdmin\DokterController as SuperAdminDokter;
+use App\Http\Controllers\SuperAdmin\PetugasController as SuperAdminPetugas;
+use App\Http\Controllers\SuperAdmin\PerawatController as SuperAdminPerawat;
+use App\Http\Controllers\Petugas\PembayaranController;
 
 // Landing page
+// Landing page
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 // Auth Routes
-Route::get('/login/petugas', [AuthController::class, 'showLoginPetugas'])->name('login.petugas');
-Route::get('/login/perawat', [AuthController::class, 'showLoginPerawat'])->name('login.perawat');
-Route::get('/login/dokter', [AuthController::class, 'showLoginDokter'])->name('login.dokter');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Petugas Pendaftaran Routes
-// MELINDUNGI RUTE: Menambahkan middleware 'auth' dan 'petugas'
-// 'auth' memastikan pengguna login, 'petugas' memastikan perannya adalah petugas.
 Route::middleware(['auth', PetugasMiddleware::class])->prefix('petugas')->name('petugas.')->group(function () {
     Route::get('/dashboard', [PetugasDashboard::class, 'index'])->name('dashboard');
     
@@ -38,12 +44,19 @@ Route::middleware(['auth', PetugasMiddleware::class])->prefix('petugas')->name('
     Route::get('pasien/{pasien}/print-card', [PetugasPasien::class, 'printCard'])->name('pasien.print-card');
     
     // Pendaftaran
+    // Pendaftaran
     Route::resource('pendaftaran', PetugasPendaftaran::class);
     Route::get('pendaftaran/{pendaftaran}/print', [PetugasPendaftaran::class, 'print'])->name('pendaftaran.print');
+    
+    // Pembayaran / Kasir
+    Route::get('/pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
+    Route::get('/pembayaran/create/{pendaftaran}', [PembayaranController::class, 'create'])->name('pembayaran.create');
+    Route::post('/pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.store');
+    Route::get('/pembayaran/{pembayaran}', [PembayaranController::class, 'show'])->name('pembayaran.show');
+    Route::get('/pembayaran/{pembayaran}/print', [PembayaranController::class, 'print'])->name('pembayaran.print');
 });
 
 // Perawat Routes
-// MELINDUNGI RUTE: Menambahkan middleware 'auth' dan 'perawat'
 Route::middleware(['auth', PerawatMiddleware::class])->prefix('perawat')->name('perawat.')->group(function () {
     Route::get('/dashboard', [PerawatDashboard::class, 'index'])->name('dashboard');
     
@@ -58,7 +71,6 @@ Route::middleware(['auth', PerawatMiddleware::class])->prefix('perawat')->name('
 });
 
 // Dokter Routes
-// MELINDUNGI RUTE: Menambahkan middleware 'auth' dan 'dokter'
 Route::middleware(['auth', DokterMiddleware::class])->prefix('dokter')->name('dokter.')->group(function () {
     Route::get('/dashboard', [DokterDashboard::class, 'index'])->name('dashboard');
     
@@ -75,4 +87,25 @@ Route::middleware(['auth', DokterMiddleware::class])->prefix('dokter')->name('do
     // Pasien
     Route::get('/pasien', [DokterPemeriksaan::class, 'cariPasien'])->name('pasien.index');
     Route::get('/pasien/{pendaftaran}/riwayat', [DokterPemeriksaan::class, 'riwayatPasien'])->name('pasien.riwayat');
+});
+
+// Apotek Routes
+Route::middleware(['auth', ApotekerMiddleware::class])->prefix('apotek')->name('apotek.')->group(function () {
+    Route::resource('obat', ApotekObat::class);
+    
+    // Resep
+    Route::get('/resep', [ApotekResep::class, 'index'])->name('resep.index');
+    Route::get('/resep/riwayat', [ApotekResep::class, 'riwayat'])->name('resep.riwayat');
+    Route::get('/resep/{resep}', [ApotekResep::class, 'show'])->name('resep.show');
+    Route::post('/resep/{resep}/process', [ApotekResep::class, 'process'])->name('resep.process');
+});
+
+// Super Admin Routes
+Route::middleware(['auth', SuperAdminMiddleware::class])->prefix('super-admin')->name('super_admin.')->group(function () {
+    Route::get('/dashboard', [SuperAdminDashboard::class, 'index'])->name('dashboard');
+    
+    // Master Data
+    Route::resource('dokter', SuperAdminDokter::class)->except(['show']);
+    Route::resource('petugas', SuperAdminPetugas::class)->except(['show']);
+    Route::resource('perawat', SuperAdminPerawat::class)->except(['show']);
 });

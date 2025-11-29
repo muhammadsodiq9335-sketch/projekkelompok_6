@@ -13,7 +13,7 @@ class PendaftaranController extends Controller
 {
     public function index()
     {
-        $pendaftaran = Pendaftaran::with(['pasien', 'dokter', 'petugas'])
+        $pendaftaran = Pendaftaran::with(['pasien', 'dokter', 'petugas', 'perawat'])
             ->latest()
             ->paginate(20);
         
@@ -24,6 +24,7 @@ class PendaftaranController extends Controller
     {
         $pasien = Pasien::orderBy('nama_lengkap')->get();
         $dokter = User::where('role', 'dokter')->orderBy('name')->get();
+        $perawat = User::where('role', 'perawat')->orderBy('name')->get();
         
         $poliklinik = [
             'Poli Umum',
@@ -38,7 +39,7 @@ class PendaftaranController extends Controller
             'Poli Kulit'
         ];
         
-        return view('petugas.pendaftaran.create', compact('pasien', 'dokter', 'poliklinik'));
+        return view('petugas.pendaftaran.create', compact('pasien', 'dokter', 'perawat', 'poliklinik'));
     }
 
     public function store(Request $request)
@@ -49,6 +50,7 @@ class PendaftaranController extends Controller
             'jam_kunjungan' => 'required',
             'poliklinik' => 'required|string',
             'dokter_id' => 'required|exists:users,id',
+            'perawat_id' => 'required|exists:users,id',
             'keluhan' => 'required|string',
             'jenis_kunjungan' => 'required|in:Baru,Lama',
         ]);
@@ -64,7 +66,7 @@ class PendaftaranController extends Controller
 
     public function show(Pendaftaran $pendaftaran)
     {
-        $pendaftaran->load(['pasien', 'dokter', 'petugas', 'vitalSign', 'pemeriksaan']);
+        $pendaftaran->load(['pasien', 'dokter', 'petugas', 'perawat', 'vitalSign', 'pemeriksaan']);
         return view('petugas.pendaftaran.show', compact('pendaftaran'));
     }
 
@@ -72,6 +74,7 @@ class PendaftaranController extends Controller
     {
         $pasien = Pasien::orderBy('nama_lengkap')->get();
         $dokter = User::where('role', 'dokter')->orderBy('name')->get();
+        $perawat = User::where('role', 'perawat')->orderBy('name')->get();
         
         $poliklinik = [
             'Poli Umum',
@@ -86,7 +89,7 @@ class PendaftaranController extends Controller
             'Poli Kulit'
         ];
         
-        return view('petugas.pendaftaran.edit', compact('pendaftaran', 'pasien', 'dokter', 'poliklinik'));
+        return view('petugas.pendaftaran.edit', compact('pendaftaran', 'pasien', 'dokter', 'perawat', 'poliklinik'));
     }
 
     public function update(Request $request, Pendaftaran $pendaftaran)
@@ -97,6 +100,7 @@ class PendaftaranController extends Controller
             'jam_kunjungan' => 'required',
             'poliklinik' => 'required|string',
             'dokter_id' => 'required|exists:users,id',
+            'perawat_id' => 'required|exists:users,id',
             'keluhan' => 'required|string',
             'jenis_kunjungan' => 'required|in:Baru,Lama',
             'status' => 'required|in:Menunggu,Dipanggil,Selesai,Batal'
@@ -118,7 +122,7 @@ class PendaftaranController extends Controller
 
     public function print(Pendaftaran $pendaftaran)
     {
-        $pendaftaran->load(['pasien', 'dokter']);
+        $pendaftaran->load(['pasien', 'dokter', 'perawat']);
         return view('petugas.pendaftaran.print', compact('pendaftaran'));
     }
 }

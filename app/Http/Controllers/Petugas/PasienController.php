@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Petugas;
 use App\Http\Controllers\Controller;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PasienController extends Controller
 {
@@ -22,17 +23,23 @@ class PasienController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
+            'nama_lengkap' => 'required|string|max:255',
+            'no_ktp' => 'required|string|size:16|unique:pasien,no_ktp',
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'alamat' => 'required|string',
             'no_telepon' => 'required|string|max:15',
+            'jenis_pasien' => 'required|in:Umum,BPJS',
+            'no_bpjs' => 'nullable|string',
         ]);
 
-        Pasien::create($validated);
+        // Assign the currently authenticated user as the creator
+        $validated['created_by'] = Auth::id();
 
-        return redirect()->route('petugas.pasien.index')
-            ->with('success', 'Data pasien berhasil ditambahkan!');
+        $pasien = Pasien::create($validated);
+
+        return redirect()->route('petugas.pendaftaran.create', ['pasien_id' => $pasien->id])
+            ->with('success', 'Data pasien berhasil ditambahkan! Silakan lanjutkan pendaftaran.');
     }
 
     public function show(Pasien $pasien)
@@ -48,11 +55,14 @@ class PasienController extends Controller
     public function update(Request $request, Pasien $pasien)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
+            'nama_lengkap' => 'required|string|max:255',
+            'no_ktp' => 'required|string|size:16|unique:pasien,no_ktp,' . $pasien->id,
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
             'alamat' => 'required|string',
             'no_telepon' => 'required|string|max:15',
+            'jenis_pasien' => 'required|in:Umum,BPJS',
+            'no_bpjs' => 'nullable|string',
         ]);
 
         $pasien->update($validated);
