@@ -23,6 +23,7 @@ class PemeriksaanController extends Controller
             ->where('dokter_id', $dokterId)
             ->whereDate('tanggal_kunjungan', $today)
             ->whereHas('vitalSign')
+            ->where('status', 'Dipanggil')
             ->orderBy('jam_kunjungan')
             ->get();
 

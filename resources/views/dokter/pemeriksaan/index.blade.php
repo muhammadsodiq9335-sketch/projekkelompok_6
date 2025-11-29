@@ -41,8 +41,7 @@
                                                 <span class="badge bg-secondary">Belum ada data</span>
                                             @endif
                                         </td>
-                                        <td>
-                                            <span class="badge bg-warning text-dark">Menunggu Dokter</span>
+                                            <span class="badge bg-{{ $item->status == 'Dipanggil' ? 'warning' : 'secondary' }} text-dark">{{ $item->status }}</span>
                                         </td>
                                         <td class="px-4 text-end">
                                             <a href="{{ route('dokter.pemeriksaan.create', $item->id) }}" class="btn btn-primary btn-sm">
