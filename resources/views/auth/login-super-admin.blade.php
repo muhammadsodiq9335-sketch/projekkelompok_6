@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Dokter - RS PROJEK WEB 6</title>
+    <title>Login Super Admin - RS PROJEK WEB 6</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +32,7 @@
         .brand-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -71,12 +71,12 @@
         }
         
         .form-control:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
             border: none;
             padding: 12px;
             border-radius: 8px;
@@ -86,7 +86,7 @@
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
         }
 
         .alert {
@@ -100,10 +100,10 @@
 <body>
     <div class="login-card">
         <div class="brand-icon">
-            <i class="fas fa-user-md"></i>
+            <i class="fas fa-user-shield"></i>
         </div>
-        <h1 class="login-title">Login Dokter</h1>
-        <p class="login-subtitle">Silakan masuk sebagai Dokter</p>
+        <h1 class="login-title">Login Super Admin</h1>
+        <p class="login-subtitle">Silakan masuk sebagai Super Admin</p>
         
         @if($errors->any())
             <div class="alert alert-danger">
@@ -120,7 +120,7 @@
             
             <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required autofocus placeholder="dokter@email.com">
+                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required autofocus placeholder="admin@email.com">
             </div>
             
             <div class="mb-3">

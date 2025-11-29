@@ -32,8 +32,15 @@ Route::get('/', function () {
 
 // Auth Routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Specific Login Routes
+Route::get('/login/super-admin', [AuthController::class, 'showLoginSuperAdmin'])->name('login.super_admin');
+Route::get('/login/apoteker', [AuthController::class, 'showLoginApoteker'])->name('login.apoteker');
+Route::get('/login/dokter', [AuthController::class, 'showLoginDokter'])->name('login.dokter');
+Route::get('/login/perawat', [AuthController::class, 'showLoginPerawat'])->name('login.perawat');
+Route::get('/login/petugas', [AuthController::class, 'showLoginPetugas'])->name('login.petugas');
 
 // Petugas Pendaftaran Routes
 Route::middleware(['auth', PetugasMiddleware::class])->prefix('petugas')->name('petugas.')->group(function () {

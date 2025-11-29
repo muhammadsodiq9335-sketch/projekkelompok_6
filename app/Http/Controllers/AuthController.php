@@ -14,6 +14,31 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+    public function showLoginSuperAdmin()
+    {
+        return view('auth.login-super-admin');
+    }
+
+    public function showLoginApoteker()
+    {
+        return view('auth.login-apoteker');
+    }
+
+    public function showLoginDokter()
+    {
+        return view('auth.login-dokter');
+    }
+
+    public function showLoginPerawat()
+    {
+        return view('auth.login-perawat');
+    }
+
+    public function showLoginPetugas()
+    {
+        return view('auth.login-petugas');
+    }
+
     public function login(Request $request)
     {
         $validated = $request->validate([
