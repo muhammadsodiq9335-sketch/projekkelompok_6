@@ -63,7 +63,7 @@
                                 <tr>
                                     <td colspan="7" class="text-center text-muted py-5">
                                         <i class="fas fa-box-open fa-3x mb-3 text-light"></i>
-                                        <p>Belum ada data obat.</p>
+                                        <p>Belum ada data obat</p>
                                     </td>
                                 </tr>
                                 @endforelse
