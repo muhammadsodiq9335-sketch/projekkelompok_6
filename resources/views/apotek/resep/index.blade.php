@@ -55,7 +55,7 @@
                                 <tr>
                                     <td colspan="6" class="text-center text-muted py-5">
                                         <i class="fas fa-clipboard-check fa-3x mb-3 text-light"></i>
-                                        <p>Tidak ada antrian resep saat ini.</p>
+                                        <p>Tidak ada antrian resep saat ini</p>
                                     </td>
                                 </tr>
                                 @endforelse
