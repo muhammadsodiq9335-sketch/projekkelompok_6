@@ -43,3 +43,4 @@ class LaporanController extends Controller
         exit;
     }
 }
+
