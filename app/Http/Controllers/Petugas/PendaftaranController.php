@@ -56,6 +56,7 @@ class PendaftaranController extends Controller
         ]);
 
         $validated['petugas_id'] = Auth::id();
+        $validated['keluhan'] = '-'; // Default value since field is removed
         $validated['status'] = 'Menunggu';
 
         $pendaftaran = Pendaftaran::create($validated);

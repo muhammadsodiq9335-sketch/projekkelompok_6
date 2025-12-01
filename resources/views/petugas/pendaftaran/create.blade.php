@@ -82,10 +82,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">Keluhan Utama</label>
-                            <textarea name="keluhan" class="form-control" rows="3" placeholder="Jelaskan keluhan yang dirasakan pasien..." required></textarea>
-                        </div>
+
 
                         <div class="d-flex justify-content-end gap-2">
                             <a href="{{ route('petugas.pendaftaran.index') }}" class="btn btn-light">Batal</a>
