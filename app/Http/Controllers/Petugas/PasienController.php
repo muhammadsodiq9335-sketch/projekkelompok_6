@@ -78,4 +78,9 @@ class PasienController extends Controller
         return redirect()->route('petugas.pasien.index')
             ->with('success', 'Data pasien berhasil dihapus!');
     }
+
+    public function printCard(Pasien $pasien)
+    {
+        return view('petugas.pasien.print-card', compact('pasien'));
+    }
 }
