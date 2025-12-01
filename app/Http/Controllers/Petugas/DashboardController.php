@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Petugas;
 use App\Http\Controllers\Controller;
 use App\Models\Pasien;
 use App\Models\Pendaftaran;
+use App\Models\Pemeriksaan;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -43,6 +44,12 @@ class DashboardController extends Controller
             ->orderBy('tanggal')
             ->get();
 
+        $topPenyakit = Pemeriksaan::select('diagnosis_utama', DB::raw('count(*) as total'))
+            ->groupBy('diagnosis_utama')
+            ->orderByDesc('total')
+            ->limit(10)
+            ->get();
+
         return view('petugas.dashboard', compact(
             'totalPasien',
             'pasienUmum',
@@ -51,7 +58,8 @@ class DashboardController extends Controller
             'pendaftaranMenunggu',
             'kunjunganPerPoliklinik',
             'pasienBaru',
-            'statistikBulanan'
+            'statistikBulanan',
+            'topPenyakit'
         ));
     }
 }
