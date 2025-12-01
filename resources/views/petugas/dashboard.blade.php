@@ -58,6 +58,19 @@
             </div>
         </div>
     </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card-custom">
+                <div class="card-header-custom">
+                    <i class="fas fa-chart-bar me-2"></i>10 Besar Penyakit ({{ date('F Y') }})
+                </div>
+                <div class="card-body p-4">
+                    <canvas id="topDiseasesChart" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="card-custom">
         <div class="card-header-custom">
@@ -106,4 +119,54 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('topDiseasesChart').getContext('2d');
+            
+            const labels = @json($topPenyakit->pluck('diagnosis_utama'));
+            const data = @json($topPenyakit->pluck('total'));
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Jumlah Kasus',
+                        data: data,
+                        backgroundColor: '#36a2eb',
+                        borderColor: '#36a2eb',
+                        borderWidth: 1,
+                        barThickness: 30,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: '10 Besar Penyakit Bulan Ini',
+                            font: {
+                                size: 16
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 @endsection
