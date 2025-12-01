@@ -27,4 +27,9 @@ class DetailResep extends Model
     {
         return $this->belongsTo(Obat::class);
     }
+
+    public function getSubtotalAttribute()
+    {
+        return $this->jumlah * $this->harga_satuan;
+    }
 }
