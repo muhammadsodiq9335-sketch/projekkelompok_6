@@ -50,10 +50,16 @@
                                     <span class="badge bg-warning text-dark">Menunggu</span>
                                 @elseif($item->status == 'Dipanggil')
                                     <span class="badge bg-info">Dipanggil</span>
+                                @elseif($item->status == 'Menunggu Obat')
+                                    <span class="badge bg-primary">Menunggu Obat</span>
+                                @elseif($item->status == 'Menunggu Pembayaran')
+                                    <span class="badge bg-primary">Menunggu Pembayaran</span>
                                 @elseif($item->status == 'Selesai')
                                     <span class="badge bg-success">Selesai</span>
                                 @elseif($item->status == 'Batal')
                                     <span class="badge bg-danger">Batal</span>
+                                @else
+                                    <span class="badge bg-secondary">{{ $item->status }}</span>
                                 @endif
                             </td>
                             <td class="px-4 py-3 text-end">
