@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Pernapasan (napas/menit)</label>
-                                <input type="number" name="pernapasan" class="form-control" placeholder="Contoh: 20" required>
+                                <input type="number" name="pernapasan" class="form-control" placeholder="Contoh: 18" required>
                             </div>
                         </div>
 
@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Tinggi Badan (cm)</label>
-                                <input type="number" name="tinggi_badan" class="form-control" required>
+                                <input type="number" name="tinggi_badan" class="form-control"  placeholder="Contoh: 165" required>
                             </div>
                         </div>
 
