@@ -23,7 +23,7 @@
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover m-0 align-middle">
-                    <thead class="bg-light">
+                    <thead class="bg-gray-100">
                         <tr>
                             <th class="px-4 py-3">No RM</th>
                             <th class="px-4 py-3">Nama Lengkap</th>
