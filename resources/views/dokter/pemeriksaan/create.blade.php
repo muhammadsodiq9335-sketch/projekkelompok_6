@@ -114,7 +114,8 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Diagnosis Sekunder</label>
-                                <input type="text" name="diagnosis_sekunder" class="form-control" value="{{ old('diagnosis_sekunder') }}">
+                                <input type="text" name="diagnosis_sekunder" class="form-control" value="{{ old('diagnosis_sekunder') }}"
+                                     placeholder="Tuliskan diagnosa sekunder jika ada" required>{{ old('anamnesa') }}</textarea>
                             </div>
                         </div>
 
