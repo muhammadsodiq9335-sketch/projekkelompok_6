@@ -56,7 +56,7 @@ class PemeriksaanController extends Controller
             'diagnosis_utama' => 'required|string',
             'diagnosis_sekunder' => 'nullable|string',
             'tindakan' => 'required|string',
-            'rencana_tindak_lanjut' => 'nullable|in:Kontrol,Rujuk,Pulang,Rawat Inap',
+            'rencana_tindak_lanjut' => 'nullable|in:Kontrol,Rujuk,Pulang',
             'tanggal_kontrol' => 'nullable|date',
             // Validasi Resep
             'obat_id' => 'nullable|array',
@@ -159,7 +159,7 @@ class PemeriksaanController extends Controller
             'diagnosis_utama' => 'required|string',
             'diagnosis_sekunder' => 'nullable|string',
             'tindakan' => 'required|string',
-            'rencana_tindak_lanjut' => 'nullable|in:Kontrol,Rujuk,Pulang,Rawat Inap',
+            'rencana_tindak_lanjut' => 'nullable|in:Kontrol,Rujuk,Pulang',
             'tanggal_kontrol' => 'nullable|date',
             'obat_id' => 'nullable|array',
             'obat_id.*' => 'exists:obat,id',

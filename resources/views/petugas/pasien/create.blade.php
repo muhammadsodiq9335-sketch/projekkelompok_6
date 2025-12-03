@@ -32,7 +32,7 @@
 
                         <div class="mb-4">
                             <label class="form-label fw-bold">Nomor KTP (NIK)</label>
-                            <input type="text" name="no_ktp" class="form-control" placeholder="16 digit NIK" value="{{ old('no_ktp') }}" required maxlength="16">
+                            <input type="text" name="no_ktp" class="form-control" placeholder="NIK 16 digit" value="{{ old('no_ktp') }}" required maxlength="16">
                         </div>
                         
                         <div class="row">
@@ -41,10 +41,11 @@
                                 <select name="jenis_pasien" class="form-select" required>
                                     <option value="Umum" {{ old('jenis_pasien') == 'Umum' ? 'selected' : '' }}>Umum</option>
                                     <option value="BPJS" {{ old('jenis_pasien') == 'BPJS' ? 'selected' : '' }}>BPJS</option>
+                                    <option value="BPJS" {{ old('jenis_pasien') == 'Asuransi' ? 'selected' : '' }}>Asuransi Lain</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <label class="form-label fw-bold">Nomor BPJS (Opsional)</label>
+                                <label class="form-label fw-bold">No. BPJS (Opsional)</label>
                                 <input type="text" name="no_bpjs" class="form-control" placeholder="Nomor BPJS jika ada" value="{{ old('no_bpjs') }}">
                             </div>
                         </div>
@@ -52,7 +53,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-bold">Tanggal Lahir</label>
-                                <input type="date" name="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir') }}" required>
+                                <input type="date" name="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir') }}" required maxlength="16">
                             </div>
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-bold">Jenis Kelamin</label>
@@ -77,7 +78,7 @@
                         <div class="d-flex justify-content-between pt-3 border-top">
                             <a href="{{ route('petugas.pasien.index') }}" class="btn btn-light">Batal</a>
                             <button type="submit" class="btn btn-primary px-4">
-                                <i class="fas fa-save me-1"></i> Simpan & Lanjut Pendaftaran
+                                <i class="fas fa-save me-1"></i> Simpan & Daftar Pasien
                             </button>
                         </div>
                     </form>
