@@ -31,7 +31,7 @@
                             <th class="px-4 py-3">Tanggal Lahir</th>
                             <th class="px-4 py-3">No Telepon</th>
                             <th class="px-4 py-3">Alamat</th>
-                            <th class="px-4 py-3 text-end">Aksi</th>
+                            <th class="px-4 py-3 text-end">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
