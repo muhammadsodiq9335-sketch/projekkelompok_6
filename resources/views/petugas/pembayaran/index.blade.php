@@ -18,7 +18,7 @@
                         <th>Pasien</th>
                         <th>Dokter</th>
                         <th>Status</th>
-                        <th>Aksi</th>
+                        <th>Tindakan</th>
                     </tr>
                 </thead>
                 <tbody>
