@@ -35,8 +35,8 @@
                                 </select>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <label class="form-label fw-bold">Nomor BPJS (Opsional)</label>
-                                <input type="text" name="no_bpjs" class="form-control" value="{{ old('no_bpjs', $pasien->no_bpjs) }}" placeholder="Nomor BPJS jika ada">
+                                <label class="form-label fw-bold">Nomor BPJS / Asuransi</label>
+                                <input type="text" name="no_bpjs" class="form-control" value="{{ old('no_bpjs', $pasien->no_bpjs) }}" placeholder="Nomor BPJS / Asuransi">
                             </div>
                         </div>
 

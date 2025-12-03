@@ -60,7 +60,7 @@
                         <tr>
                             <td colspan="7" class="text-center text-muted py-5">
                                 <div class="mb-2"><i class="fas fa-users fa-3x opacity-25"></i></div>
-                                Belum ada data pasien.
+                                Belum ada data pasien
                             </td>
                         </tr>
                         @endforelse
