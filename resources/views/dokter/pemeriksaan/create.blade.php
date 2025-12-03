@@ -121,7 +121,8 @@
 
                         <div class="mb-4">
                             <label class="form-label">Tindakan / Terapi (P)</label>
-                            <textarea name="tindakan" class="form-control" rows="3" required>{{ old('tindakan') }}</textarea>
+                            <textarea name="tindakan" class="form-control" rows="3" required>{{ old('tindakan') }}</textarea
+                                placeholder="Tuliskan tindakan / terapi" required>{{ old('anamnesa') }}</textarea>
                         </div>
 
                         <div class="row">
