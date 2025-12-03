@@ -48,7 +48,7 @@
 
     <div class="card-custom">
         <div class="card-header-custom">
-            Antrian Pemeriksaan Tanda Vital
+            Antrian Pemeriksaan Vital Signs
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
