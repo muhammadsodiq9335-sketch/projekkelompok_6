@@ -53,7 +53,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-bold">Tanggal Lahir</label>
-                                <input type="date" name="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir') }}" required>
+                                <input type="date" name="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir') }}" required maxlength="16">
                             </div>
                             <div class="col-md-6 mb-4">
                                 <label class="form-label fw-bold">Jenis Kelamin</label>
