@@ -12,9 +12,10 @@
         <!-- Patient Info & Vital Signs -->
         <div class="col-md-4">
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Data Pasien</h6>
+                <div class="card-header py-3 bg-primary">
+                    <h6 class="m-0 font-weight-bold text-white">Data Pasien</h6>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-borderless">
@@ -44,9 +45,10 @@
             </div>
 
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-info">Vital Signs (Perawat)</h6>
+                <div class="card-header py-3 bg-primary">
+                    <h6 class="m-0 font-weight-bold text-white">Vital Signs (Perawat)</h6>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-sm">
@@ -91,14 +93,14 @@
                         <h6 class="m-0 fw-bold">Hasil Pemeriksaan</h6>
                     </div>
                     <div class="card-body">
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label class="form-label">Anamnesa (S)</label>
                             <textarea name="anamnesa" class="form-control" rows="3"
                                 placeholder="Tuliskan keluhan utama pasien..." required>{{ old('anamnesa') }}</textarea>
                         </div>
 
                         
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label class="form-label">Pemeriksaan Fisik (O)</label>
                             <textarea name="pemeriksaan_fisik" class="form-control" rows="3"
                                 placeholder="Tuliskan Hasil Pemeriksaan Fisik" required>{{ old('anamnesa') }}</textarea>
@@ -115,7 +117,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label class="form-label">Tindakan / Terapi (P)</label>
                             <textarea name="tindakan" class="form-control" rows="3" required>{{ old('tindakan') }}</textarea>
                         </div>
@@ -140,8 +142,8 @@
 
                 <!-- Prescription -->
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-primary">Resep Obat</h6>
+                    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-primary text-white">
+                        <h6 class="m-0 font-weight-bold">Resep Obat</h6>
                         <button type="button" class="btn btn-sm btn-success" id="add-obat">
                             <i class="fas fa-plus"></i> Tambah Obat
                         </button>
@@ -223,5 +225,15 @@
         addButton.click();
     });
 </script>
+
+<script>
+    document.addEventListener('input', function (e) {
+        if (e.target.classList.contains('auto-expand')) {
+            e.target.style.height = 'auto';
+            e.target.style.height = e.target.scrollHeight + 'px';
+        }
+    });
+</script>
+
 @endsection
 @endsection
