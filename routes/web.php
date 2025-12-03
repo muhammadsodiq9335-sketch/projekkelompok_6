@@ -22,6 +22,7 @@ use App\Http\Controllers\SuperAdmin\DashboardController as SuperAdminDashboard;
 use App\Http\Controllers\SuperAdmin\DokterController as SuperAdminDokter;
 use App\Http\Controllers\SuperAdmin\PetugasController as SuperAdminPetugas;
 use App\Http\Controllers\SuperAdmin\PerawatController as SuperAdminPerawat;
+use App\Http\Controllers\SuperAdmin\ApotekerController as SuperAdminApoteker;
 use App\Http\Controllers\Petugas\PembayaranController;
 
 // Landing page
@@ -80,6 +81,7 @@ Route::middleware(['auth', PerawatMiddleware::class])->prefix('perawat')->name('
     Route::get('/pemeriksaan/{vitalSign}', [PerawatPemeriksaan::class, 'show'])->name('pemeriksaan.show');
     Route::get('/pemeriksaan/{vitalSign}/edit', [PerawatPemeriksaan::class, 'edit'])->name('pemeriksaan.edit');
     Route::put('/pemeriksaan/{vitalSign}', [PerawatPemeriksaan::class, 'update'])->name('pemeriksaan.update');
+    Route::delete('/pemeriksaan/{vitalSign}', [PerawatPemeriksaan::class, 'destroy'])->name('pemeriksaan.destroy');
     Route::get('/riwayat', [PerawatPemeriksaan::class, 'riwayat'])->name('pemeriksaan.riwayat');
 });
 
@@ -94,6 +96,7 @@ Route::middleware(['auth', DokterMiddleware::class])->prefix('dokter')->name('do
     Route::get('/pemeriksaan/{pemeriksaan}', [DokterPemeriksaan::class, 'show'])->name('pemeriksaan.show');
     Route::get('/pemeriksaan/{pemeriksaan}/edit', [DokterPemeriksaan::class, 'edit'])->name('pemeriksaan.edit');
     Route::put('/pemeriksaan/{pemeriksaan}', [DokterPemeriksaan::class, 'update'])->name('pemeriksaan.update');
+    Route::delete('/pemeriksaan/{pemeriksaan}', [DokterPemeriksaan::class, 'destroy'])->name('pemeriksaan.destroy');
     Route::get('/pemeriksaan/{pemeriksaan}/print', [DokterPemeriksaan::class, 'print'])->name('pemeriksaan.print');
     Route::get('/riwayat', [DokterPemeriksaan::class, 'riwayat'])->name('pemeriksaan.riwayat');
     
@@ -121,4 +124,5 @@ Route::middleware(['auth', SuperAdminMiddleware::class])->prefix('super-admin')-
     Route::resource('dokter', SuperAdminDokter::class)->except(['show']);
     Route::resource('petugas', SuperAdminPetugas::class)->except(['show']);
     Route::resource('perawat', SuperAdminPerawat::class)->except(['show']);
+    Route::resource('apoteker', SuperAdminApoteker::class)->except(['show']);
 });

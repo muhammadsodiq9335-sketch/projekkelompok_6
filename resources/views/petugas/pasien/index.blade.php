@@ -47,6 +47,13 @@
                                 <a href="{{ route('petugas.pasien.edit', $p) }}" class="btn btn-sm btn-light text-primary" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </a>
+                                <form action="{{ route('petugas.pasien.destroy', $p) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data pasien ini?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-light text-danger" title="Hapus">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @empty
