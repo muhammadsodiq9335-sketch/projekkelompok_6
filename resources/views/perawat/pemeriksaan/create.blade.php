@@ -49,7 +49,7 @@
                                 <input type="number" name="nadi" class="form-control" placeholder="Contoh: 80" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Pernapasan (x/menit)</label>
+                                <label class="form-label">Pernapasan (napas/menit)</label>
                                 <input type="number" name="pernapasan" class="form-control" placeholder="Contoh: 20" required>
                             </div>
                         </div>
