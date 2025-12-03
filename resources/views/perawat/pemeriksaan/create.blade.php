@@ -24,8 +24,6 @@
                                 <strong>Poliklinik:</strong> {{ $pendaftaran->poliklinik }}
                             </div>
                         </div>
-                        <hr>
-                        <strong>Keluhan Utama:</strong> {{ $pendaftaran->keluhan }}
                     </div>
 
                     <form action="{{ route('perawat.pemeriksaan.store') }}" method="POST">
