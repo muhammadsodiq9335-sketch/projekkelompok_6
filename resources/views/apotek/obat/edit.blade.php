@@ -25,7 +25,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Jenis</label>
+                                <label class="form-label fw-bold">Jenis Obat</label>
                                 <select name="jenis" class="form-select" required>
                                     <option value="Tablet" {{ $obat->jenis == 'Tablet' ? 'selected' : '' }}>Tablet</option>
                                     <option value="Kapsul" {{ $obat->jenis == 'Kapsul' ? 'selected' : '' }}>Kapsul</option>
