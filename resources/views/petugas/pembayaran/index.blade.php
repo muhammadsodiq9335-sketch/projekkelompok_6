@@ -7,7 +7,7 @@
 @section('content')
 <div class="card border-0 shadow-sm">
     <div class="card-header bg-primary py-3">
-        <h5 class="card-title mb-0">Antrian Pembayaran</h5>
+        <h5 class="m-0 font-weight-bold text-white">Antrian Pembayaran</h5>
     </div>
     <div class="card-body">
         <div class="table-responsive">
