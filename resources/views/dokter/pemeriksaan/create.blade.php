@@ -12,9 +12,10 @@
         <!-- Patient Info & Vital Signs -->
         <div class="col-md-4">
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Data Pasien</h6>
+                <div class="card-header py-3 bg-primary">
+                    <h6 class="m-0 font-weight-bold text-white">Data Pasien</h6>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-borderless">
@@ -44,9 +45,10 @@
             </div>
 
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-info">Vital Signs (Perawat)</h6>
+                <div class="card-header py-3 bg-primary">
+                    <h6 class="m-0 font-weight-bold text-white">Vital Signs (Perawat)</h6>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-sm">
