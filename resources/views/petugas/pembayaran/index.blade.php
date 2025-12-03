@@ -6,13 +6,13 @@
 
 @section('content')
 <div class="card border-0 shadow-sm">
-    <div class="card-header bg-white py-3">
-        <h5 class="m-0 font-weight-bold text-white">Antrian Pembayaran</h5>
+    <div class="card-header bg-primary py-3">
+        <h5 class="card-title mb-0">Antrian Pembayaran</h5>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover align-middle">
-                <thead class="table-blue-100">
+                <thead class="table-light">
                     <tr>
                         <th>No. Antrian</th>
                         <th>Pasien</th>
