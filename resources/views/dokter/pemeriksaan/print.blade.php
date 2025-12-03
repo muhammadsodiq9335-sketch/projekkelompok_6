@@ -13,7 +13,15 @@
         window.onload = function() { window.print(); }
     </script>
 </head>
-<body>
+<body onload="window.print()">
+
+    <div class="header">
+        <h2>SI-KIA DEFISSA</h2>
+        <p>Jl. Mastrip,Krajan Timur, Kec. Sumber Sari<br>Telp: (021) 1234567</p>
+    </div>
+
+    <div class="info">
+
     <h1>Form Pemeriksaan</h1>
 
     <div class="section">
