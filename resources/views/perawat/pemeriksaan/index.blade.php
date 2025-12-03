@@ -15,7 +15,7 @@
             @endif
 
             <div class="card-custom">
-                <div class="card-header-custom" style="background-color: #0defd; color: white;">
+                <div class="card-header-custom bg-info text-white">
                     <i class="fas fa-user-nurse me-2"></i>Antrian Pasien Pemeriksaan Vital Signs
                 </div>
                 <div class="card-body p-0">
@@ -52,7 +52,7 @@
                                 <tr>
                                     <td colspan="6" class="text-center text-muted py-5">
                                         <i class="fas fa-users-slash fa-3x mb-3 text-light"></i>
-                                        <p>Tidak ada pasien dalam antrean saat ini.</p>
+                                        <p>Tidak ada pasien dalam antrean saat ini</p>
                                     </td>
                                 </tr>
                                 @endforelse
