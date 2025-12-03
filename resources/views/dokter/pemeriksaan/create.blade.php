@@ -72,10 +72,7 @@
                                 <td>Berat Badan/Tinggi Baadan</td>
                                 <td>: {{ $pendaftaran->vitalSign->berat_badan }} kg / {{ $pendaftaran->vitalSign->tinggi_badan }} cm</td>
                             </tr>
-                            <tr>
-                                <td colspan="2" class="pt-2"><strong>Keluhan Utama:</strong><br>
-                                {{ $pendaftaran->keluhan }}</td>
-                            </tr>
+                            
                         </table>
                     </div>
                 </div>
