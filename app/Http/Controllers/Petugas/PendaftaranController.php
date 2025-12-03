@@ -28,15 +28,8 @@ class PendaftaranController extends Controller
         
         $poliklinik = [
             'Poli Umum',
-            'Poli Anak',
-            'Poli Gigi',
-            'Poli Mata',
             'Poli Kandungan',
-            'Poli Jantung',
-            'Poli Paru',
-            'Poli Bedah',
-            'Poli THT',
-            'Poli Kulit'
+            'Poli Anak'
         ];
         
         return view('petugas.pendaftaran.create', compact('pasien', 'dokter', 'perawat', 'poliklinik'));
@@ -51,7 +44,6 @@ class PendaftaranController extends Controller
             'poliklinik' => 'required|string',
             'dokter_id' => 'required|exists:users,id',
             'perawat_id' => 'required|exists:users,id',
-            'keluhan' => 'required|string',
             'jenis_kunjungan' => 'required|in:Baru,Lama',
         ]);
 
@@ -79,15 +71,8 @@ class PendaftaranController extends Controller
         
         $poliklinik = [
             'Poli Umum',
-            'Poli Anak',
-            'Poli Gigi',
-            'Poli Mata',
             'Poli Kandungan',
-            'Poli Jantung',
-            'Poli Paru',
-            'Poli Bedah',
-            'Poli THT',
-            'Poli Kulit'
+            'Poli Anak'
         ];
         
         return view('petugas.pendaftaran.edit', compact('pendaftaran', 'pasien', 'dokter', 'perawat', 'poliklinik'));
@@ -102,7 +87,6 @@ class PendaftaranController extends Controller
             'poliklinik' => 'required|string',
             'dokter_id' => 'required|exists:users,id',
             'perawat_id' => 'required|exists:users,id',
-            'keluhan' => 'required|string',
             'jenis_kunjungan' => 'required|in:Baru,Lama',
             'status' => 'required|in:Menunggu,Dipanggil,Selesai,Batal'
         ]);

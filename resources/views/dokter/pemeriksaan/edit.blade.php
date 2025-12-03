@@ -124,7 +124,7 @@
                                     <option value="Pulang" {{ $pemeriksaan->rencana_tindak_lanjut == 'Pulang' ? 'selected' : '' }}>Pulang</option>
                                     <option value="Kontrol" {{ $pemeriksaan->rencana_tindak_lanjut == 'Kontrol' ? 'selected' : '' }}>Kontrol</option>
                                     <option value="Rujuk" {{ $pemeriksaan->rencana_tindak_lanjut == 'Rujuk' ? 'selected' : '' }}>Rujuk</option>
-                                    <option value="Rawat Inap" {{ $pemeriksaan->rencana_tindak_lanjut == 'Rawat Inap' ? 'selected' : '' }}>Rawat Inap</option>
+
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3" id="tanggal_kontrol_wrapper" style="{{ $pemeriksaan->rencana_tindak_lanjut == 'Kontrol' ? '' : 'display: none;' }}">
