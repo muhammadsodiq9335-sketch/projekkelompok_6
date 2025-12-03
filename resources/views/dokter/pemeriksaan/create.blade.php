@@ -91,14 +91,14 @@
                         <h6 class="m-0 fw-bold">Hasil Pemeriksaan</h6>
                     </div>
                     <div class="card-body">
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label class="form-label">Anamnesa (S)</label>
                             <textarea name="anamnesa" class="form-control" rows="3"
                                 placeholder="Tuliskan keluhan utama pasien..." required>{{ old('anamnesa') }}</textarea>
                         </div>
 
                         
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label class="form-label">Pemeriksaan Fisik (O)</label>
                             <textarea name="pemeriksaan_fisik" class="form-control" rows="3" required>{{ old('pemeriksaan_fisik') }}</textarea>
                         </div>
@@ -114,7 +114,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label class="form-label">Tindakan / Terapi (P)</label>
                             <textarea name="tindakan" class="form-control" rows="3" required>{{ old('tindakan') }}</textarea>
                         </div>
@@ -222,5 +222,15 @@
         addButton.click();
     });
 </script>
+
+<script>
+    document.addEventListener('input', function (e) {
+        if (e.target.classList.contains('auto-expand')) {
+            e.target.style.height = 'auto';
+            e.target.style.height = e.target.scrollHeight + 'px';
+        }
+    });
+</script>
+
 @endsection
 @endsection
