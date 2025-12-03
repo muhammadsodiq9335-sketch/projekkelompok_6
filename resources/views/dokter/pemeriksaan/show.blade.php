@@ -15,7 +15,7 @@
 
     <div class="card mb-3">
         <div class="card-body">
-            <h5>Hasil Pemeriksaan</h5>
+            <h5>Hasil Pemeriksaan Dokter</h5>
             <p><strong>Anamnesis:</strong><br>{{ $pemeriksaan->anamnesis }}</p>
             <p><strong>Pemeriksaan Fisik:</strong><br>{{ $pemeriksaan->pemeriksaan_fisik }}</p>
             <p><strong>Diagnosis Utama:</strong> {{ $pemeriksaan->diagnosis_utama }}</p>
