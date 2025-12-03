@@ -211,7 +211,7 @@
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <i class="fas fa-hospital-alt"></i>
-            <span>RS PROJEK WEB 6</span>
+            <span>SI-KIA DEFISSA</span>
         </div>
         
         <ul class="sidebar-menu">
