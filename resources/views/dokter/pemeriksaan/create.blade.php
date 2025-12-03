@@ -109,7 +109,8 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Diagnosis Utama (A)</label>
-                                <input type="text" name="diagnosis_utama" class="form-control" value="{{ old('diagnosis_utama') }}" required>
+                                <input type="text" name="diagnosis_utama" class="form-control" value="{{ old('diagnosis_utama') }}"
+                                    placeholder="Tuliskan diagnosa pasien" required>{{ old('anamnesa') }}</textarea>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Diagnosis Sekunder</label>
