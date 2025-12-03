@@ -51,8 +51,8 @@
                                 @empty
                                 <tr>
                                     <td colspan="6" class="text-center text-muted py-5">
-                                        <i class="fas fa-clipboard-check fa-3x mb-3 text-light"></i>
-                                        <p>Saat ini tidak ada pasien dalam antrean.</p>
+                                        <i class="fas fa-users-slash fa-3x mb-3 text-light"></i>
+                                        <p>Tidak ada pasien dalam antrean saat ini.</p>
                                     </td>
                                 </tr>
                                 @endforelse
