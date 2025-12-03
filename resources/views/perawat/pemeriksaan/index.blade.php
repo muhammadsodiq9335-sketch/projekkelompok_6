@@ -52,7 +52,7 @@
                                 <tr>
                                     <td colspan="6" class="text-center text-muted py-5">
                                         <i class="fas fa-clipboard-check fa-3x mb-3 text-light"></i>
-                                        <p>Tidak ada antrian pasien saat ini.</p>
+                                        <p>Saat ini tidak ada pasien dalam antrean.</p>
                                     </td>
                                 </tr>
                                 @endforelse
