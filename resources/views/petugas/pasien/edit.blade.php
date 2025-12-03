@@ -31,6 +31,7 @@
                                 <select name="jenis_pasien" class="form-select" required>
                                     <option value="Umum" {{ old('jenis_pasien', $pasien->jenis_pasien) == 'Umum' ? 'selected' : '' }}>Umum</option>
                                     <option value="BPJS" {{ old('jenis_pasien', $pasien->jenis_pasien) == 'BPJS' ? 'selected' : '' }}>BPJS</option>
+                                    <option value="Asuransi Lain" {{ old('jenis_pasien', $pasien->jenis_pasien) == 'Asuransi Lain' ? 'selected' : '' }}>Asuransi Lain</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-4">
