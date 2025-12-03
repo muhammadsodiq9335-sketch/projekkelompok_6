@@ -64,7 +64,7 @@
 
     <div class="header">
         <h2>SI-KIA DEFISSA</h2>
-        <p>Jl. Sehat Selalu No. 123<br>Telp: (021) 1234567</p>
+        <p>Jl. Mastrip,Krajan Timur, Kec. Sumber Sari<br>Telp: (021) 1234567</p>
     </div>
 
     <div class="info">
