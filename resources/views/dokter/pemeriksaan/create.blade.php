@@ -51,7 +51,7 @@
                     <div class="table-responsive">
                         <table class="table table-sm">
                             <tr>
-                                <td>Tekanan Darah</td>
+                                <td>Tekanan Darah (TD) </td>
                                 <td>: {{ $pendaftaran->vitalSign->tekanan_darah }} mmHg</td>
                             </tr>
                             <tr>
@@ -63,7 +63,7 @@
                                 <td>: {{ $pendaftaran->vitalSign->nadi }} x/menit</td>
                             </tr>
                             <tr>
-                                <td>Frekuensi Nafas</td>
+                                <td>Frekuensi Nafas (RR) </td>
                                 <td>: {{ $pendaftaran->vitalSign->pernapasan }} x/menit</td>
                             </tr>
                             <tr>
