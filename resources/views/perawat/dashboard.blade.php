@@ -14,7 +14,7 @@
                 </div>
                 <div class="stat-details">
                     <h3>{{ $antrianMenunggu->count() ?? 0 }}</h3>
-                    <p>Menunggu Pemeriksaan Tanda Vital</p>
+                    <p>Menunggu Pemeriksaan Vital Signs</p>
                 </div>
             </div>
         </div>
@@ -48,18 +48,18 @@
 
     <div class="card-custom">
         <div class="card-header-custom">
-            Antrian Pemeriksaan Tanda Vital
+            Antrian Pemeriksaan Vital Signs
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover m-0">
                     <thead class="bg-light">
                         <tr>
-                            <th class="px-4 py-3">No Antrian</th>
+                            <th class="px-4 py-3">No. Antrian</th>
                             <th class="px-4 py-3">Nama Pasien</th>
                             <th class="px-4 py-3">Poliklinik</th>
                             <th class="px-4 py-3">Dokter Tujuan</th>
-                            <th class="px-4 py-3">Aksi</th>
+                            <th class="px-4 py-3">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>

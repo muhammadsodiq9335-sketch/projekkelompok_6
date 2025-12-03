@@ -8,7 +8,7 @@
     <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">Daftar Dokter</h5>
         <a href="{{ route('super_admin.dokter.create') }}" class="btn btn-primary btn-sm">
-            <i class="fas fa-plus me-1"></i> Tambah Dokter
+            <i class="fas fa-plus me-1"></i> Tambah Data Dokter
         </a>
     </div>
     <div class="card-body">

@@ -50,6 +50,11 @@ class DashboardController extends Controller
             ->limit(10)
             ->get();
 
+        $pendaftaran = Pendaftaran::with(['pasien', 'dokter'])
+            ->whereDate('tanggal_kunjungan', $today)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         return view('petugas.dashboard', compact(
             'totalPasien',
             'pasienUmum',
@@ -59,7 +64,8 @@ class DashboardController extends Controller
             'kunjunganPerPoliklinik',
             'pasienBaru',
             'statistikBulanan',
-            'topPenyakit'
+            'topPenyakit',
+            'pendaftaran'
         ));
     }
 }

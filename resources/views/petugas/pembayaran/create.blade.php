@@ -9,7 +9,7 @@
     <div class="col-md-8">
         <div class="card border-0 shadow-sm mb-4">
             <div class="card-header bg-white py-3">
-                <h5 class="card-title mb-0">Rincian Tagihan</h5>
+                <h5 class="card-title mb-0">Rincian Pembayaran</h5>
             </div>
             <div class="card-body">
                 <div class="row mb-4">

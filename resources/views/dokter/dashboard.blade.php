@@ -14,7 +14,7 @@
                 </div>
                 <div class="stat-details">
                     <h3>{{ $antrianMenunggu->count() ?? 0 }}</h3>
-                    <p>Antrian</p>
+                    <p>Pasien Menunggu</p>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                                     <th class="px-4 py-3">No Antrian</th>
                                     <th class="px-4 py-3">Nama Pasien</th>
                                     <th class="px-4 py-3">No RM</th>
-                                    <th class="px-4 py-3">Aksi</th>
+                                    <th class="px-4 py-3">Tindakan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -92,7 +92,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="4" class="text-center py-4 text-muted">Tidak ada antrian pasien saat ini</td>
+                                    <td colspan="4" class="text-center py-4 text-muted">Tidak ada pasien dalam antrian saat ini</td>
                                 </tr>
                                 @endforelse
                             </tbody>
@@ -122,7 +122,7 @@
                             @endforeach
                         </ul>
                     @else
-                        <p class="text-center text-muted my-4">Belum ada data diagnosa bulan ini.</p>
+                        <p class="text-center text-muted my-4">Belum ada data diagnosis bulan ini.</p>
                     @endif
                 </div>
             </div>
@@ -144,7 +144,7 @@
                                     <th class="px-4 py-3">Tanggal</th>
                                     <th class="px-4 py-3">Nama Pasien</th>
                                     <th class="px-4 py-3">Diagnosis</th>
-                                    <th class="px-4 py-3">Aksi</th>
+                                    <th class="px-4 py-3">Tindakan</th>
                                 </tr>
                             </thead>
                             <tbody>

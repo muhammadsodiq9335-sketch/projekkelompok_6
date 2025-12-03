@@ -82,8 +82,8 @@
 </head>
 <body>
     <div class="header">
-        <h1 class="title">RS PROJEK WEB 6</h1>
-        <p class="subtitle">Jl. Raya Kesehatan No. 123, Kota Sehat</p>
+        <h1 class="title">SI-KIA DEFISSA</h1>
+        <p class="subtitle">Jl. Mastrip,Krajan Timur, Kec. Sumber Sari</p>
     </div>
 
     <div class="content">
@@ -115,7 +115,7 @@
     </div>
 
     <div class="footer">
-        <p>Silakan menunggu panggilan.</p>
+        <p>Silakan Antrian Anda di Panggil</p>
         <p>Terima kasih atas kunjungan Anda.</p>
         <small>{{ date('d/m/Y H:i:s') }}</small>
     </div>

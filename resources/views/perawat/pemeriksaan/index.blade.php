@@ -23,12 +23,12 @@
                         <table class="table table-hover align-middle mb-0">
                             <thead class="bg-light">
                                 <tr>
-                                    <th class="px-4 py-3">No Antrian</th>
-                                    <th class="px-4 py-3">Pasien</th>
+                                    <th class="px-4 py-3">No. Antrian</th>
+                                    <th class="px-4 py-3">Nama Pasien</th>
                                     <th class="px-4 py-3">Poliklinik</th>
                                     <th class="px-4 py-3">Dokter Tujuan</th>
                                     <th class="px-4 py-3">Status</th>
-                                    <th class="px-4 py-3 text-end">Aksi</th>
+                                    <th class="px-4 py-3 text-end">Tindakan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,8 +51,8 @@
                                 @empty
                                 <tr>
                                     <td colspan="6" class="text-center text-muted py-5">
-                                        <i class="fas fa-clipboard-check fa-3x mb-3 text-light"></i>
-                                        <p>Saat ini tidak ada pasien dalam antrean.</p>
+                                        <i class="fas fa-users-slash fa-3x mb-3 text-light"></i>
+                                        <p>Tidak ada pasien dalam antrean saat ini.</p>
                                     </td>
                                 </tr>
                                 @endforelse

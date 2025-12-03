@@ -45,33 +45,33 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Nadi (x/menit)</label>
+                                <label class="form-label">Nadi (denyut/menit)</label>
                                 <input type="number" name="nadi" class="form-control" placeholder="Contoh: 80" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Pernapasan (x/menit)</label>
-                                <input type="number" name="pernapasan" class="form-control" placeholder="Contoh: 20" required>
+                                <label class="form-label">Pernapasan (napas/menit)</label>
+                                <input type="number" name="pernapasan" class="form-control" placeholder="Contoh: 18" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Berat Badan (kg)</label>
-                                <input type="number" name="berat_badan" class="form-control" step="0.1" required>
+                                <input type="number" name="berat_badan" class="form-control" step="0.1" placeholder="0" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Tinggi Badan (cm)</label>
-                                <input type="number" name="tinggi_badan" class="form-control" required>
+                                <input type="number" name="tinggi_badan" class="form-control"  placeholder="0" required>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Catatan Tambahan (Opsional)</label>
-                            <textarea name="catatan" class="form-control" rows="2"></textarea>
+                            <label class="form-label">Catatan Pemeriksaan (opsional)</label>
+                            <textarea name="catatan" class="form-control" rows="2" placeholder="Catat kondisi tambahan, atau observasi perawat..."></textarea>
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-info text-white btn-lg">Simpan & Kirim ke Dokter</button>
+                            <button type="submit" class="btn btn-info text-white btn-lg">Simpan & Kirim Hasil Pemeriksaan</button>
                         </div>
                     </form>
                 </div>
