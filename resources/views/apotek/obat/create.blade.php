@@ -24,7 +24,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Jenis</label>
+                                <label class="form-label fw-bold">Jenis Obat</label>
                                 <select name="jenis" class="form-select" required>
                                     <option value="">-- Pilih Jenis --</option>
                                     <option value="Tablet">Tablet</option>
