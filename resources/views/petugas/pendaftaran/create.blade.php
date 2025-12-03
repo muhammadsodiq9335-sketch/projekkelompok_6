@@ -19,7 +19,7 @@
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Pilih Pasien</label>
                                 <select name="pasien_id" class="form-select select2-pasien" required>
-                                    <option value="">-- Cari Nama / No RM --</option>
+                                    <option value="">-- Cari Nama Pasien / No RM --</option>
                                     @foreach($pasien as $p)
                                         <option value="{{ $p->id }}" {{ request('pasien_id') == $p->id ? 'selected' : '' }}>
                                             {{ $p->no_rm }} - {{ $p->nama_lengkap }}
