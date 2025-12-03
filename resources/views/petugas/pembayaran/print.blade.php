@@ -63,7 +63,7 @@
 <body onload="window.print()">
 
     <div class="header">
-        <h2>PROJEK KELOMPOK 6</h2>
+        <h2>SI-KIA DEFISSA</h2>
         <p>Jl. Sehat Selalu No. 123<br>Telp: (021) 1234567</p>
     </div>
 
