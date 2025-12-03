@@ -93,8 +93,10 @@
                     <div class="card-body">
                         <div class="mb-3">
                             <label class="form-label">Anamnesa (S)</label>
-                            <textarea name="anamnesa" class="form-control" rows="3" required>{{ old('anamnesa') }}</textarea>
+                            <textarea name="anamnesa" class="form-control" rows="3"
+                                placeholder="Tuliskan keluhan utama pasien..." required>{{ old('anamnesa') }}</textarea>
                         </div>
+
                         
                         <div class="mb-3">
                             <label class="form-label">Pemeriksaan Fisik (O)</label>
