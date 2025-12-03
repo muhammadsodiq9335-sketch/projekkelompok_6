@@ -23,7 +23,7 @@
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover m-0 align-middle">
-                    <thead class="bg-light">
+                    <thead class="bg-gray-100">
                         <tr>
                             <th class="px-4 py-3">No RM</th>
                             <th class="px-4 py-3">Nama Lengkap</th>
@@ -31,7 +31,7 @@
                             <th class="px-4 py-3">Tanggal Lahir</th>
                             <th class="px-4 py-3">No Telepon</th>
                             <th class="px-4 py-3">Alamat</th>
-                            <th class="px-4 py-3 text-end">Aksi</th>
+                            <th class="px-4 py-3 text-end">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
