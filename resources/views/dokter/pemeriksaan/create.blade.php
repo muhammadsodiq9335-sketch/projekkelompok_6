@@ -45,13 +45,13 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-info">Tanda Vital (Perawat)</h6>
+                    <h6 class="m-0 font-weight-bold text-info">Vital Signs (Perawat)</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-sm">
                             <tr>
-                                <td>TD</td>
+                                <td>Tekanan Darah</td>
                                 <td>: {{ $pendaftaran->vitalSign->tekanan_darah }} mmHg</td>
                             </tr>
                             <tr>
@@ -63,11 +63,11 @@
                                 <td>: {{ $pendaftaran->vitalSign->nadi }} x/menit</td>
                             </tr>
                             <tr>
-                                <td>RR</td>
+                                <td>Frekuensi Nafas</td>
                                 <td>: {{ $pendaftaran->vitalSign->pernapasan }} x/menit</td>
                             </tr>
                             <tr>
-                                <td>BB/TB</td>
+                                <td>Berat Badan/Tinggi Baadan</td>
                                 <td>: {{ $pendaftaran->vitalSign->berat_badan }} kg / {{ $pendaftaran->vitalSign->tinggi_badan }} cm</td>
                             </tr>
                             <tr>
