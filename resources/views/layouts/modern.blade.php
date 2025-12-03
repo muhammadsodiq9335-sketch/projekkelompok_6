@@ -208,7 +208,7 @@
     <!-- Header -->
     <header class="main-header">
         <div class="brand-logo">
-            <i class="fas fa-hospital-symbol"></i> RS PROJEK WEB 6
+            <i class="fas fa-hospital-symbol"></i> SI-KIA DEFISSA
         </div>
         <button class="btn btn-link text-white d-lg-none me-auto" id="sidebarToggle">
             <i class="fas fa-bars"></i>
