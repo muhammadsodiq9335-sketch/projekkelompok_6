@@ -30,7 +30,7 @@
                                     <th class="px-4 py-3">Nama Obat</th>
                                     <th class="px-4 py-3">Jenis Obat</th>
                                     <th class="px-4 py-3">Stok</th>
-                                    <th class="px-4 py-3">Harga</th>
+                                    <th class="px-4 py-3">Harga Obat</th>
                                     <th class="px-4 py-3">Satuan</th>
                                     <th class="px-4 py-3 text-end">Aksi</th>
                                 </tr>
