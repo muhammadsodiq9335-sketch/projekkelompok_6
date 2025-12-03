@@ -139,8 +139,8 @@
 
                 <!-- Prescription -->
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                        <h6 class="m-0 font-weight-bold text-primary">Resep Obat</h6>
+                    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-primary text-white">
+                        <h6 class="m-0 font-weight-bold">Resep Obat</h6>
                         <button type="button" class="btn btn-sm btn-success" id="add-obat">
                             <i class="fas fa-plus"></i> Tambah Obat
                         </button>
