@@ -110,7 +110,7 @@
                     <i class="fas fa-plus"></i>
                 </div>
                 <h6 class="fw-bold text-dark mb-1">Tambah Dokter</h6>
-                <small class="text-muted">Input data dokter baru</small>
+                <small class="text-muted">Input Data dokter baru</small>
             </div>
         </a>
     </div>
