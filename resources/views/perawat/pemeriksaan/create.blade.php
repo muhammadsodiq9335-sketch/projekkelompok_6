@@ -45,7 +45,7 @@
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Nadi (x/menit)</label>
+                                <label class="form-label">Nadi (denyut/menit)</label>
                                 <input type="number" name="nadi" class="form-control" placeholder="Contoh: 80" required>
                             </div>
                             <div class="col-md-6 mb-3">
