@@ -10,7 +10,7 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-clinic-medical me-2"></i>Apotek MediCare</a>
+            <a class="navbar-brand" href="#"><i class="fas fa-clinic-medical me-2"></i>Apotek SI-KIA DEFISSA</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
