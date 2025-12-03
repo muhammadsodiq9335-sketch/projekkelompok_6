@@ -1,7 +1,7 @@
 @extends('layouts.modern')
 
 @section('title', 'Laporan Kunjungan')
-@section('header-title', 'Laporan Kunjungan')
+@section('header-title', 'Laporan Kunjungan Pasien')
 
 @section('content')
 <div class="row">
@@ -54,7 +54,7 @@
                             <tr>
                                 <td colspan="8" class="text-center py-4 text-muted">
                                     <i class="fas fa-inbox fa-2x mb-2 d-block"></i>
-                                    Belum ada data kunjungan
+                                    Tidak ada data kunjungan
                                 </td>
                             </tr>
                             @endforelse
