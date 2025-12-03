@@ -14,7 +14,7 @@
                 </div>
                 <div class="stat-details">
                     <h3>{{ $antrianMenunggu->count() ?? 0 }}</h3>
-                    <p> Menunggu Antrian</p>
+                    <p>Antrian</p>
                 </div>
             </div>
         </div>

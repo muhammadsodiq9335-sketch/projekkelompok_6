@@ -1,7 +1,7 @@
 @extends('layouts.modern')
 
 @section('title', 'Laporan Kunjungan')
-@section('header-title', 'Laporan Kunjungan')
+@section('header-title', 'Laporan Kunjungan Pasien')
 
 @section('content')
 <div class="row">
@@ -10,7 +10,7 @@
             <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
                 <h5 class="mb-0 text-muted">Data Kunjungan Pasien</h5>
                 <a href="{{ route('petugas.laporan.export') }}" class="btn btn-success">
-                    <i class="fas fa-file-excel me-2"></i>Export Excel
+                    <i class="fas fa-file-excel me-2"></i>Download Laporan
                 </a>
             </div>
             <div class="card-body">
@@ -42,7 +42,7 @@
                                     @if($pendaftaran->status == 'selesai')
                                         <span class="badge bg-success">Selesai</span>
                                     @elseif($pendaftaran->status == 'menunggu')
-                                        <span class="badge bg-warning text-dark">Menunggu</span>
+                                        <span class="badge bg-warning text-dark">Dalam Antrian</span>
                                     @elseif($pendaftaran->status == 'diperiksa')
                                         <span class="badge bg-info text-dark">Diperiksa</span>
                                     @else

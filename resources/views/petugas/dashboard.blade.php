@@ -27,7 +27,7 @@
                 </div>
                 <div class="stat-details">
                     <h3>{{ $totalPasien ?? 0 }}</h3>
-                    <p>Total Pasien</p>
+                    <p>Jumlah Pasien</p>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="stat-details">
                     <h3>{{ $poliklinikCount ?? 5 }}</h3>
-                    <p>Total Poli</p>
+                    <p>Jumlah Poli</p>
                 </div>
             </div>
         </div>
