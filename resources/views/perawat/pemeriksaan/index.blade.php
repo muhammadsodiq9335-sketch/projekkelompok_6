@@ -16,7 +16,7 @@
 
             <div class="card-custom">
                 <div class="card-header-custom bg-info text-white">
-                    <i class="fas fa-user-nurse me-2"></i>Antrian Pasien (Perlu Tanda Vital)
+                    <i class="fas fa-user-nurse me-2"></i>Antrian Pasien Pemeriksaan Vital Signs
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
