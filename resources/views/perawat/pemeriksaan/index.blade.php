@@ -23,12 +23,12 @@
                         <table class="table table-hover align-middle mb-0">
                             <thead class="bg-light">
                                 <tr>
-                                    <th class="px-4 py-3">No Antrian</th>
-                                    <th class="px-4 py-3">Pasien</th>
+                                    <th class="px-4 py-3">No. Antrian</th>
+                                    <th class="px-4 py-3">Nama Pasien</th>
                                     <th class="px-4 py-3">Poliklinik</th>
                                     <th class="px-4 py-3">Dokter Tujuan</th>
                                     <th class="px-4 py-3">Status</th>
-                                    <th class="px-4 py-3 text-end">Aksi</th>
+                                    <th class="px-4 py-3 text-end">Tindakan</th>
                                 </tr>
                             </thead>
                             <tbody>
