@@ -14,7 +14,7 @@
                 </div>
                 <div class="stat-details">
                     <h3>{{ $antrianMenunggu->count() ?? 0 }}</h3>
-                    <p>Menunggu Tanda Vital</p>
+                    <p>Menunggu Pemeriksaan Tanda Vital</p>
                 </div>
             </div>
         </div>
