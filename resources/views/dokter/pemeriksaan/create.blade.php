@@ -124,7 +124,7 @@
                                     <option value="Pulang">Pulang</option>
                                     <option value="Kontrol">Kontrol</option>
                                     <option value="Rujuk">Rujuk</option>
-                                    <option value="Rawat Inap">Rawat Inap</option>
+
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3" id="tanggal_kontrol_wrapper" style="display: none;">
