@@ -100,7 +100,8 @@
                         
                         <div class="mb-3">
                             <label class="form-label">Pemeriksaan Fisik (O)</label>
-                            <textarea name="pemeriksaan_fisik" class="form-control" rows="3" required>{{ old('pemeriksaan_fisik') }}</textarea>
+                            <textarea name="pemeriksaan_fisik" class="form-control" rows="3"
+                                placeholder="Tuliskan Hasil Pemeriksaan Fisik" required>{{ old('anamnesa') }}</textarea>
                         </div>
 
                         <div class="row">
