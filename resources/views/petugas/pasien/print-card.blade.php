@@ -99,7 +99,7 @@
     <div class="card">
         <div class="header">
             <h2>KARTU BEROBAT</h2>
-            <p>RS PROJEK WEB 6</p>
+            <p>SI-KIA DEFISSA</p>
         </div>
         <div class="content">
             <div class="row">
