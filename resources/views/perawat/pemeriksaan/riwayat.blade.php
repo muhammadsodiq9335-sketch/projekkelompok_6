@@ -25,8 +25,8 @@
                                 <tr>
                                     <th class="px-4 py-3">Tanggal</th>
                                     <th class="py-3">Pasien</th>
-                                    <th class="py-3">TD / Suhu</th>
-                                    <th class="py-3">BB / TB</th>
+                                    <th class="py-3">Tekanan Darah / Suhu</th>
+                                    <th class="py-3">Berat Badan / Tinggi Badan</th>
                                     <th class="px-4 py-3 text-end">Aksi</th>
                                 </tr>
                             </thead>
@@ -39,12 +39,12 @@
                                             <small class="text-muted">{{ $item->pendaftaran->pasien->no_rm }}</small>
                                         </td>
                                         <td>
-                                            <div>TD: {{ $item->tekanan_darah }}</div>
+                                            <div>Tekanan Darah: {{ $item->tekanan_darah }}</div>
                                             <small class="text-muted">Suhu: {{ $item->suhu }}°C</small>
                                         </td>
                                         <td>
                                             <div>BB: {{ $item->berat_badan }} kg</div>
-                                            <small class="text-muted">TB: {{ $item->tinggi_badan }} cm</small>
+                                            <small class="text-muted">Tinggi Badan: {{ $item->tinggi_badan }} cm</small>
                                         </td>
                                         <td class="px-4 text-end">
                                             <a href="{{ route('perawat.pemeriksaan.show', $item->id) }}" class="btn btn-sm btn-info text-white me-1" title="Detail">
