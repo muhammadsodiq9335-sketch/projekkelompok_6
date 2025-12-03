@@ -55,11 +55,11 @@
                 <table class="table table-hover m-0">
                     <thead class="bg-light">
                         <tr>
-                            <th class="px-4 py-3">No Antrian</th>
+                            <th class="px-4 py-3">No. Antrian</th>
                             <th class="px-4 py-3">Nama Pasien</th>
                             <th class="px-4 py-3">Poliklinik</th>
                             <th class="px-4 py-3">Dokter Tujuan</th>
-                            <th class="px-4 py-3">Aksi</th>
+                            <th class="px-4 py-3">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
