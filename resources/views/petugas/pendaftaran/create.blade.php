@@ -19,7 +19,7 @@
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Pilih Pasien</label>
                                 <select name="pasien_id" class="form-select select2-pasien" required>
-                                    <option value="">-- Cari Nama / No RM --</option>
+                                    <option value="">-- Cari Nama Pasien / No RM --</option>
                                     @foreach($pasien as $p)
                                         <option value="{{ $p->id }}" {{ request('pasien_id') == $p->id ? 'selected' : '' }}>
                                             {{ $p->no_rm }} - {{ $p->nama_lengkap }}
@@ -87,7 +87,7 @@
                         <div class="d-flex justify-content-end gap-2">
                             <a href="{{ route('petugas.pendaftaran.index') }}" class="btn btn-light">Batal</a>
                             <button type="submit" class="btn btn-primary px-5">
-                                <i class="fas fa-save me-1"></i> Simpan Pendaftaran
+                                <i class="fas fa-save me-1"></i> Simpan
                             </button>
                         </div>
                     </form>
