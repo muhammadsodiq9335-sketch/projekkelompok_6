@@ -58,7 +58,7 @@
                             </tr>
                             <tr>
                                 <td>Suhu</td>
-                                <td>: {{ $pendaftaran->vitalSign->suhu_tubuh }} °C</td>
+                                <td>: {{ $pendaftaran->vitalSign->suhu }} °C</td>
                             </tr>
                             <tr>
                                 <td>Nadi</td>
