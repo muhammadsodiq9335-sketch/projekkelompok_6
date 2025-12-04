@@ -18,7 +18,7 @@
                         <table class="table table-sm table-borderless">
                             <tr>
                                 <td width="100">Nama</td>
-                                <td>: <strong>{{ $pendaftaran->pasien->nama }}</strong></td>
+                                <td>: <strong>{{ $pendaftaran->pasien->nama_lengkap }}</strong></td>
                             </tr>
                             <tr>
                                 <td>No. RM</td>
