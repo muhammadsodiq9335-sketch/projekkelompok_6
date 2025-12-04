@@ -40,8 +40,8 @@
                             <tbody>
                                 @forelse($resep as $item)
                                 <tr>
-                                    <td class="px-4 py-3">{{ $item->pendaftaran->pasien->no_rekam_medis }}</td>
-                                    <td class="px-4 py-3">{{ $item->pendaftaran->pasien->nama }}</td>
+                                    <td class="px-4 py-3">{{ $item->pendaftaran->pasien->no_rm }}</td>
+                                    <td class="px-4 py-3">{{ $item->pendaftaran->pasien->nama_lengkap }}</td>
                                     <td class="px-4 py-3">{{ $item->dokter->name }}</td>
                                     <td class="px-4 py-3">{{ $item->created_at->format('d M Y H:i') }}</td>
                                     <td class="px-4 py-3"><span class="badge bg-warning">Menunggu</span></td>
