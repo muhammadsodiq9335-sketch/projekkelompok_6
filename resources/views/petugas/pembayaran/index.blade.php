@@ -26,7 +26,7 @@
                     <tr>
                         <td><span class="badge bg-primary">{{ $p->no_antrian }}</span></td>
                         <td>
-                            <div class="fw-bold">{{ $p->pasien->nama }}</div>
+                            <div class="fw-bold">{{ $p->pasien->nama_lengkap }}</div>
                             <small class="text-muted">{{ $p->pasien->no_rm }}</small>
                         </td>
                         <td>{{ $p->dokter->name ?? '-' }}</td>

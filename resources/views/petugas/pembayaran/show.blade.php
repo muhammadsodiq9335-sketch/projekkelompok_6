@@ -27,7 +27,7 @@
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <span>Pasien</span>
-                            <span class="fw-bold">{{ $pembayaran->pendaftaran->pasien->nama }}</span>
+                            <span class="fw-bold">{{ $pembayaran->pendaftaran->pasien->nama_lengkap }}</span>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between mb-2">
