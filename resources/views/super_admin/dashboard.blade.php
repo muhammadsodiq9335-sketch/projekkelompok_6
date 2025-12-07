@@ -31,7 +31,7 @@
 
 <!-- Stats Cards -->
 <div class="row g-4 mb-5" id="stats">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="card h-100 border-0">
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
@@ -53,7 +53,7 @@
         </div>
     </div>
     
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="card h-100 border-0">
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
@@ -74,8 +74,30 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-3">
+        <div class="card h-100 border-0">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div class="d-flex align-items-center justify-content-center bg-purple bg-opacity-10 rounded-4" style="width: 60px; height: 60px;">
+                        <i class="fas fa-pills fa-2x text-purple" style="color: #6f42c1;"></i>
+                    </div>
+                    <span class="badge bg-purple bg-opacity-10 text-purple px-3 py-2 rounded-pill" style="color: #6f42c1; background-color: rgba(111, 66, 193, 0.1) !important;">
+                        <i class="fas fa-check-circle me-1"></i> Farmasi
+                    </span>
+                </div>
+                <h6 class="text-muted text-uppercase fw-bold small mb-1">Total Apoteker</h6>
+                <h2 class="fw-bold mb-0 display-5">{{ \App\Models\User::where('role', 'apoteker')->count() }}</h2>
+                <div class="mt-4 pt-3 border-top">
+                    <a href="{{ route('super_admin.apoteker.index') }}" class="text-decoration-none fw-semibold d-flex align-items-center" style="color: #6f42c1;">
+                        Kelola Apoteker <i class="fas fa-arrow-right ms-auto"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="card h-100 border-0">
             <div class="card-body p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
@@ -137,15 +159,15 @@
         </a>
     </div>
     <div class="col-md-3 mb-4">
-        <div class="card h-100 bg-light border-dashed">
-            <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center text-center">
-                <div class="text-muted mb-2">
-                    <i class="fas fa-cog fa-2x"></i>
+        <a href="{{ route('super_admin.apoteker.create') }}" class="card h-100 text-decoration-none hover-scale">
+            <div class="card-body p-4 text-center">
+                <div class="d-inline-flex align-items-center justify-content-center bg-purple text-white rounded-circle mb-3 shadow-sm" style="width: 50px; height: 50px; background-color: #6f42c1 !important;">
+                    <i class="fas fa-pills"></i>
                 </div>
-                <h6 class="fw-bold text-muted mb-0">Pengaturan Sistem</h6>
-                <small class="text-muted">(Segera Hadir)</small>
+                <h6 class="fw-bold text-dark mb-1">Tambah Apoteker</h6>
+                <small class="text-muted">Input data apoteker baru</small>
             </div>
-        </div>
+        </a>
     </div>
 </div>
 @endsection
