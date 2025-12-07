@@ -223,12 +223,12 @@
             </li>
             
             <li class="menu-item">
-                <a href="#menuMaster" data-bs-toggle="collapse" class="menu-link {{ request()->routeIs('super_admin.dokter.*') || request()->routeIs('super_admin.petugas.*') || request()->routeIs('super_admin.perawat.*') ? '' : 'collapsed' }}" aria-expanded="{{ request()->routeIs('super_admin.dokter.*') || request()->routeIs('super_admin.petugas.*') || request()->routeIs('super_admin.perawat.*') ? 'true' : 'false' }}">
+                <a href="#menuMaster" data-bs-toggle="collapse" class="menu-link {{ request()->routeIs('super_admin.dokter.*') || request()->routeIs('super_admin.petugas.*') || request()->routeIs('super_admin.perawat.*') || request()->routeIs('super_admin.apoteker.*') ? '' : 'collapsed' }}" aria-expanded="{{ request()->routeIs('super_admin.dokter.*') || request()->routeIs('super_admin.petugas.*') || request()->routeIs('super_admin.perawat.*') || request()->routeIs('super_admin.apoteker.*') ? 'true' : 'false' }}">
                     <span class="menu-icon"><i class="fas fa-database"></i></span>
                     <span>Master Data</span>
                     <i class="fas fa-chevron-right menu-arrow"></i>
                 </a>
-                <div class="collapse {{ request()->routeIs('super_admin.dokter.*') || request()->routeIs('super_admin.petugas.*') || request()->routeIs('super_admin.perawat.*') ? 'show' : '' }}" id="menuMaster">
+                <div class="collapse {{ request()->routeIs('super_admin.dokter.*') || request()->routeIs('super_admin.petugas.*') || request()->routeIs('super_admin.perawat.*') || request()->routeIs('super_admin.apoteker.*') ? 'show' : '' }}" id="menuMaster">
                     <ul class="submenu">
                         <li class="submenu-item">
                             <a href="{{ route('super_admin.dokter.index') }}" class="submenu-link {{ request()->routeIs('super_admin.dokter.*') ? 'text-white' : '' }}">Data Dokter</a>
@@ -238,6 +238,9 @@
                         </li>
                         <li class="submenu-item">
                             <a href="{{ route('super_admin.perawat.index') }}" class="submenu-link {{ request()->routeIs('super_admin.perawat.*') ? 'text-white' : '' }}">Data Perawat</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('super_admin.apoteker.index') }}" class="submenu-link {{ request()->routeIs('super_admin.apoteker.*') ? 'text-white' : '' }}">Data Apoteker</a>
                         </li>
                     </ul>
                 </div>
