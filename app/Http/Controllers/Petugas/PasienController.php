@@ -73,6 +73,19 @@ class PasienController extends Controller
 
     public function destroy(Pasien $pasien)
     {
+        // Manual cascade delete to handle foreign key constraints
+        // Get all pendaftaran IDs for this patient
+        $pendaftaranIds = $pasien->pendaftaran()->pluck('id');
+
+        // Delete all pemeriksaan for these pendaftaran
+        \App\Models\Pemeriksaan::whereIn('pendaftaran_id', $pendaftaranIds)->delete();
+
+        // Delete all vital signs for these pendaftaran
+        \App\Models\VitalSign::whereIn('pendaftaran_id', $pendaftaranIds)->delete();
+        
+        // Delete all pendaftaran (although DB might handle this via cascade, it's safer to do it here if we are handling children)
+        $pasien->pendaftaran()->delete();
+
         $pasien->delete();
 
         return redirect()->route('petugas.pasien.index')

@@ -26,6 +26,7 @@
                                 <th>Dokter</th>
                                 <th>Tanggal</th>
                                 <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,15 +40,26 @@
                                 <td>{{ $pendaftaran->dokter->name ?? '-' }}</td>
                                 <td>{{ $pendaftaran->tanggal_kunjungan->format('d/m/Y') }}</td>
                                 <td>
-                                    @if($pendaftaran->status == 'selesai')
+                                    @if(strtolower($pendaftaran->status) == 'selesai')
                                         <span class="badge bg-success">Selesai</span>
-                                    @elseif($pendaftaran->status == 'menunggu')
+                                    @elseif(strtolower($pendaftaran->status) == 'menunggu')
                                         <span class="badge bg-warning text-dark">Dalam Antrian</span>
-                                    @elseif($pendaftaran->status == 'diperiksa')
+                                    @elseif(strtolower($pendaftaran->status) == 'diperiksa')
                                         <span class="badge bg-info text-dark">Diperiksa</span>
+                                    @elseif(strtolower($pendaftaran->status) == 'menunggu obat')
+                                        <span class="badge bg-primary">Menunggu Obat</span>
+                                    @elseif(strtolower($pendaftaran->status) == 'menunggu pembayaran')
+                                        <span class="badge bg-primary">Menunggu Pembayaran</span>
+                                    @elseif(strtolower($pendaftaran->status) == 'batal')
+                                        <span class="badge bg-danger">Batal</span>
                                     @else
-                                        <span class="badge bg-secondary">{{ ucfirst($pendaftaran->status) }}</span>
+                                        <span class="badge bg-secondary">{{ $pendaftaran->status }}</span>
                                     @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('petugas.pendaftaran.edit', $pendaftaran->id) }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
                                 </td>
                             </tr>
                             @empty
