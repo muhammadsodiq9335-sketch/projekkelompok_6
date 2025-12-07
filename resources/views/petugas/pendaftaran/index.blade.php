@@ -63,9 +63,22 @@
                                 @endif
                             </td>
                             <td class="px-4 py-3 text-end">
+                                <a href="{{ route('petugas.pendaftaran.show', $item) }}" class="btn btn-sm btn-outline-info" title="Detail">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{{ route('petugas.pendaftaran.edit', $item) }}" class="btn btn-sm btn-outline-warning" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
                                 <a href="{{ route('petugas.pendaftaran.print', $item) }}" class="btn btn-sm btn-outline-secondary" target="_blank" title="Cetak Antrian">
                                     <i class="fas fa-print"></i>
                                 </a>
+                                <form action="{{ route('petugas.pendaftaran.destroy', $item) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Hapus">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @empty
