@@ -44,6 +44,9 @@
                             <td class="px-4 py-3">{{ $p->no_telepon }}</td>
                             <td class="px-4 py-3 text-muted small">{{ Str::limit($p->alamat, 30) }}</td>
                             <td class="px-4 py-3 text-end">
+                                <a href="{{ route('petugas.pasien.show', $p) }}" class="btn btn-sm btn-light text-info" title="Detail">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                                 <a href="{{ route('petugas.pasien.edit', $p) }}" class="btn btn-sm btn-light text-primary" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </a>
