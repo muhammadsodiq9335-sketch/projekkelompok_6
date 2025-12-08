@@ -292,6 +292,12 @@
                         <span>Antrian Pemeriksaan</span>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="{{ route('perawat.pemeriksaan.riwayat') }}" class="menu-link {{ request()->routeIs('perawat.pemeriksaan.riwayat') ? 'active' : '' }}">
+                        <i class="fas fa-history menu-icon"></i>
+                        <span>Riwayat Pemeriksaan</span>
+                    </a>
+                </li>
             @elseif(Auth::user()->role == 'dokter')
                 <li class="menu-item">
                     <a href="{{ route('dokter.dashboard') }}" class="menu-link {{ request()->routeIs('dokter.dashboard') ? 'active' : '' }}">
@@ -305,11 +311,23 @@
                         <span>Pemeriksaan</span>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="{{ route('dokter.pemeriksaan.riwayat') }}" class="menu-link {{ request()->routeIs('dokter.pemeriksaan.riwayat') ? 'active' : '' }}">
+                        <i class="fas fa-history menu-icon"></i>
+                        <span>Riwayat Pemeriksaan</span>
+                    </a>
+                </li>
             @elseif(Auth::user()->role == 'apoteker')
                 <li class="menu-item">
                     <a href="{{ route('apotek.resep.index') }}" class="menu-link {{ request()->routeIs('apotek.resep.*') ? 'active' : '' }}">
                         <i class="fas fa-prescription-bottle-alt menu-icon"></i>
                         <span>Antrian Resep</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('apotek.resep.riwayat') }}" class="menu-link {{ request()->routeIs('apotek.resep.riwayat') ? 'active' : '' }}">
+                        <i class="fas fa-history menu-icon"></i>
+                        <span>Riwayat Resep</span>
                     </a>
                 </li>
                 <li class="menu-item">
